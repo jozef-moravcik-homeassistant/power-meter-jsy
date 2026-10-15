@@ -4,6 +4,7 @@
   "codeowners": [
     "@jozef-moravcik-homeassistant"
   ],
+  "after_dependencies": ["modbus"],
   "config_flow": true,
   "dependencies": [],
   "documentation": "https://github.com/jozef-moravcik-homeassistant/power-meter-jsy",

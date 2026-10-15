@@ -321,8 +321,11 @@ class _ModbusNodeStepsMixin:
                 CONF_MODBUS_PORT, CONF_MODBUS_BAUDRATE, CONF_MODBUS_BYTESIZE, CONF_MODBUS_STOPBITS,
                 CONF_MODBUS_PARITY, CONF_MODBUS_DELAY, CONF_MODBUS_MESSAGE_WAIT, CONF_MODBUS_TIMEOUT,
             ):
-                self._data["usb_" + key] = user_input[key]   # s prefixom (pamätá si hodnoty pri prepínaní typu)
-                self._data[key] = user_input[key]            # bez prefixu (finálne uloženie)
+                value = user_input[key]
+                if key == CONF_MODBUS_PARITY:
+                    value = str(value).upper()               # selektor používa malé písmená (n/e/o/m), ukladá sa N/E/O/M
+                self._data["usb_" + key] = value   # s prefixom (pamätá si hodnoty pri prepínaní typu)
+                self._data[key] = value            # bez prefixu (finálne uloženie)
             return await self._finish_modbus_node()
 
         available_ports = await _get_free_serial_ports(self.hass)
@@ -370,9 +373,9 @@ class _ModbusNodeStepsMixin:
             )),
             vol.Required(
                 CONF_MODBUS_PARITY,
-                default=str(self._data.get("usb_" + CONF_MODBUS_PARITY, DEFAULT_MODBUS_PARITY)),
+                default=str(self._data.get("usb_" + CONF_MODBUS_PARITY, DEFAULT_MODBUS_PARITY)).lower(),
             ): SelectSelector(SelectSelectorConfig(
-                options=MODBUS_PARITY_OPTIONS,
+                options=[x.lower() for x in MODBUS_PARITY_OPTIONS],
                 mode=SelectSelectorMode.DROPDOWN,
                 translation_key="modbus_parity",
             )),
@@ -592,7 +595,7 @@ class PowerMeterJsyConfigFlow(_ModbusNodeStepsMixin, _PhaseStepMixin, config_ent
             new = tools.CommSettings(
                 _safe_int(user_input[CONF_TOOLS_NEW_DEVICE_ID], old.device_id),
                 _safe_int(user_input[CONF_TOOLS_NEW_BAUDRATE], old.baudrate),
-                user_input[CONF_TOOLS_NEW_FORMAT],
+                str(user_input[CONF_TOOLS_NEW_FORMAT]).upper(),   # selektor používa malé písmená (8n1…)
             )
             self._data[CONF_TOOLS_NEW_DEVICE_ID] = new.device_id
             self._data[CONF_TOOLS_NEW_BAUDRATE] = new.baudrate
@@ -614,9 +617,9 @@ class PowerMeterJsyConfigFlow(_ModbusNodeStepsMixin, _PhaseStepMixin, config_ent
                 CONF_TOOLS_NEW_BAUDRATE, default=str(self._data.get(CONF_TOOLS_NEW_BAUDRATE, old.baudrate)),
             ): _baudrate_selector(),
             vol.Required(
-                CONF_TOOLS_NEW_FORMAT, default=self._data.get(CONF_TOOLS_NEW_FORMAT, old.data_format),
+                CONF_TOOLS_NEW_FORMAT, default=str(self._data.get(CONF_TOOLS_NEW_FORMAT, old.data_format)).lower(),
             ): SelectSelector(SelectSelectorConfig(
-                options=list(COMM_FORMATS), mode=SelectSelectorMode.DROPDOWN, translation_key="data_format",
+                options=[x.lower() for x in COMM_FORMATS], mode=SelectSelectorMode.DROPDOWN, translation_key="data_format",
             )),
         })
         return self.async_show_form(step_id="tools_new_params", data_schema=schema, errors=errors)
