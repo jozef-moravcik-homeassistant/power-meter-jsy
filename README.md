@@ -380,7 +380,7 @@ If the new settings are identical to the current ones (USB connection) the wizar
 
 **6️⃣ Confirm.** The wizard shows a summary – target ID, model and the change *ID 1 → 2, 9600 → 19200 baud, 8N1 → 8E1*. Confirm to write the settings.
 
-**7️⃣ Wait for the verification.** The meter answers slowly, so writing and verification can take **several seconds**. The settings are sent as **one write** (Modbus function `0x10`, register `0x0004`), then the wizard reads the meter again **with the new parameters** to check that they were really applied.
+**7️⃣ Wait for the verification.** The settings are sent as **one write**, once device saves the new settings, the wizard reads the meter again **with the new parameters** to check that they were really applied.
 
 ### 🏁 Possible results
 
