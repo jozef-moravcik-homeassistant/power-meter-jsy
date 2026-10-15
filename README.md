@@ -5,8 +5,7 @@
 <h1 align="center">⚡ Power Meter JSY for Home Assistant</h1>
 
 <p align="center">
-  Local, multi-device Modbus integration for <b>JSY-MK-138</b> 12-channel AC power meters.<br>
-  USB / RS485 · Modbus TCP · Modbus UDP · existing Home Assistant Modbus hub
+  Local, multi-device Modbus integration for <b>JSY Power Meter devices</b><br>
 </p>
 
 <p align="center">
