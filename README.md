@@ -54,14 +54,14 @@ The integration is built for **real-world installations**, not just a single met
 - a third meter reachable through a **Modbus hub you already defined** in `configuration.yaml`,
 - several meters with different Modbus IDs **sharing one RS485 bus**.
 
-### 🔌 Supported hardware
+### 🔌 Currently Supported hardware
 
 | Model | Channels | Status |
 |-------|:--------:|--------|
 | **JSY-MK-138** | 12 | ✅ Supported |
 | Other JSY devices | – | 🔜 Planned – more devices from the same manufacturer will be added in the near future |
 
-> The integration identifies the model automatically by reading the device (register `0x0000`) and creates only the entities that the model really has. Adding further JSY models therefore does not change how you configure anything.
+> The integration identifies the model automatically by reading the device model and creates only the entities and configuration profile that the model really supports. Adding further JSY models therefore does not change how you configure anything.
 
 ---
 
@@ -70,15 +70,13 @@ The integration is built for **real-world installations**, not just a single met
 - 🔌 **Four connection types** – USB / RS485 serial, Modbus TCP, Modbus UDP, or an existing Home Assistant Modbus hub.
 - 🧩 **Three device types** – *Modbus Node* (the connection), *Power Meter* (the meter), *Tools* (the setup wizard) – see below.
 - 📈 **72 measurement sensors per meter** (12 channels × 6 quantities) plus diagnostic sensors.
-- 🚀 **One Modbus packet per update** – all 84 measurement registers are read in a single request, so the slow device is never overloaded.
-- 🔁 **Many meters, one bus** – several Power Meters can share one Modbus Node (different Modbus IDs); all traffic on a line is serialised so that requests never collide.
+- 🚀 **One Modbus packet per update** – All 84 measurement registers are read in a single request, which saves RS485 bus capacity.
+- 🔁 **Support for complex infrastructure** – Multiple electricity meters can share a single Modbus node (using different IDs within the Modbus protocol), but they can also be connected to different nodes with distinct hardware connections.
 - 🧙 **Built-in setup wizard** – change the **Modbus Device ID** and the **communication parameters** (baud rate, 8N1 / 8E1 / 8O1 / 8N2) of a meter directly from Home Assistant, with automatic verification.
-- 🎛️ **Phase assignment** – tell each current channel which voltage phase (A / B / C) it measures; the assignment is written to the device.
+- 🎛️ **Flexible assignment of phases to channels** – tell each current channel which voltage phase (A / B / C) it measures; the assignment is written to the device.
 - 🛡️ **Robust communication** – automatic reconnect, retries, minimum packet gap, hard read time-out, and a log that is not flooded when a device is offline.
 - 🔗 **Device hierarchy** – every Power Meter is linked to the Modbus Node it uses (*Connected via …*).
-- 🛠️ **Repairs integration** – if a Modbus Node that is still used by a Power Meter is removed, Home Assistant shows a repair issue.
 - 🌍 **11 languages** built in.
-- 🏠 **100 % local** – `iot_class: local_polling`.
 
 ---
 
