@@ -80,17 +80,21 @@ The integration is built for **real-world installations**, not just a single met
 
 ---
 
-## 🧩 How it works – the three device types
-
-When you press **Add device** you are asked what kind of device you want to add. The integration deliberately separates *how you connect* from *what you measure*. This is what makes complex installations possible.
+## 🧩 How it works – the device types
 
 <p align="center">
   <img src="images/power_meter_jsy_2.jpg" alt="Integration page with a Modbus Node and a Power Meter" width="640">
 </p>
 
+When you press **Add device** you are asked what kind of device you want to add. The integration deliberately separates *how you connect* from *what you measure*. This is what makes complex installations possible.
+
 ### 🔌 Modbus Node – the connection
 
 A **Modbus Node** represents **one Modbus line** (one USB/RS485 adapter, one TCP/UDP gateway, or one existing Modbus hub). It holds the connection settings and owns the physical link.
+
+<p align="center">
+  <img src="images/power_meter_jsy_create_device_type_modbus_node_1.jpg" alt="Selecting the Modbus Node device type" width="320">
+</p>
 
 - It talks to the line **one request at a time**, so any number of Power Meters can safely share it.
 - It provides a diagnostic **Error code** sensor that tells you whether the port could be opened and whether the device answered.
@@ -98,12 +102,21 @@ A **Modbus Node** represents **one Modbus line** (one USB/RS485 adapter, one TCP
 
 ### ⚡ Power Meter – the meter
 
-A **Power Meter** represents **one JSY meter**. It is linked to a Modbus Node and has its own **Modbus Device ID** (slave address) and **read interval**. It creates all the measurement sensors and lets you configure the phase assignment of the channels.
+<p align="center">
+  <img src="images/power_meter_jsy_create_device_type_power_meter_1.jpg" alt="Selecting the Power Meter device type" width="320">
+</p>
+
+A **Power Meter** represents **one JSY physical device - power meter**. It is linked to a Modbus Node and has its own **Modbus Device ID** (slave address) and **read interval**. It creates all the measurement sensors and lets you configure the phase assignment of the channels.
 
 - The model, voltage range and current range are read from the device when you add it.
 - You create one Power Meter per physical meter – even when ten of them share the same RS485 bus.
 
 ### 🧙 Tools – the setup wizard
+
+
+<p align="center">
+  <img src="images/power_meter_jsy_tools_1.jpg" alt="Selecting the Tools device type" width="320">
+</p>
 
 **Tools** is a wizard, not a device – it never creates anything in Home Assistant. Use it to **change the Modbus Device ID and the communication parameters** (baud rate, data format) that are stored **inside the meter**. It is the way to prepare a brand-new meter (factory settings: ID 1, 9600 baud, 8N1) for a bus that already contains other meters.
 
@@ -276,10 +289,6 @@ When you submit, the integration contacts the meter. If it cannot be read you ge
 </p>
 
 The JSY-MK-138 measures **up to 12 current channels** against **three voltage inputs (phases A, B and C)**. For every channel select the phase it is connected to (**Phase A / B / C**). The values currently stored in the device are pre-selected; when you confirm, any change is **written to the meter** and verified by reading it back. Choose the phase that really supplies the circuit measured by that current channel, so that the meter measures it against the correct voltage.
-
-<p align="center">
-  <img src="images/power_meter_jsy_create_device_type_power_meter_1.jpg" alt="Selecting the Power Meter device type" width="320">
-</p>
 
 After the last dialog the Power Meter is created together with all its entities (see [Entities](#-entities)).
 
