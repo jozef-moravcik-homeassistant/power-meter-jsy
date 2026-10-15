@@ -44,7 +44,7 @@
 
 ## 🎯 Overview
 
-**Power Meter JSY** reads energy-monitoring data from **JSY-MK-138** multi-channel AC power meters over **Modbus** and exposes it as native Home Assistant sensors – voltage, current, active power, total active energy, power factor and frequency for **each of the 12 measuring channels**. Everything is read locally; no cloud, no account.
+**Power Meter JSY** reads energy-monitoring data from **JSY Power Meter devices (e.i.JSY-MK-138)** multi-channel AC power meters over **Modbus** and exposes it as native Home Assistant sensors – voltage, current, active power, total active energy, power factor and frequency for **each of the measuring channels**. Everything is read locally; no cloud, no account.
 
 The integration is built for **real-world installations**, not just a single meter on a single cable. It lets you combine, in one Home Assistant instance, any number of meters that are connected in different ways – for example:
 
@@ -58,7 +58,7 @@ The integration is built for **real-world installations**, not just a single met
 | Model | Channels | Status |
 |-------|:--------:|--------|
 | **JSY-MK-138** | 12 | ✅ Supported |
-| Other JSY devices | – | 🔜 Planned – more devices from the same manufacturer will be added in the near future |
+| Other JSY devices | – | 🔜 **Planned – more devices from the same manufacturer will be added in the near future** |
 
 > The integration identifies the model automatically by reading the device model and creates only the entities and configuration profile that the model really supports. Adding further JSY models therefore does not change how you configure anything.
 
