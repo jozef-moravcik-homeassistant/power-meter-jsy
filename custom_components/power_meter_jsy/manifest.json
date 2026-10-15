@@ -1,10 +1,12 @@
 {
   "domain": "power_meter_jsy",
   "name": "Power Meter JSY",
+  "after_dependencies": [
+    "modbus"
+  ],
   "codeowners": [
     "@jozef-moravcik-homeassistant"
   ],
-  "after_dependencies": ["modbus"],
   "config_flow": true,
   "dependencies": [],
   "documentation": "https://github.com/jozef-moravcik-homeassistant/power-meter-jsy",
