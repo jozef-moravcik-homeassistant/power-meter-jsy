@@ -288,7 +288,7 @@ When you submit, the integration contacts the meter. If it cannot be read you ge
   <img src="images/power_meter_jsy_create_device_type_power_meter_configuration_2.jpg" alt="Phase assignment" width="420">
 </p>
 
-The JSY-MK-138 measures **up to 12 current channels** against **three voltage inputs (phases A, B and C)**. For every channel select the phase it is connected to (**Phase A / B / C**). The values currently stored in the device are pre-selected; when you confirm, any change is **written to the meter** and verified by reading it back. Choose the phase that really supplies the circuit measured by that current channel, so that the meter measures it against the correct voltage.
+The JSY-MK-138 measures **up to 12 current channels** against **three voltage inputs (phases A, B and C)**. For each channel, select the phase to which it is connected (**Phase A / B / C**). The physical device allows for very flexible assignment of phases to channels, so you can configure this assignment according to your requirements. When you confirm, any change is **written to the physical device** and verified by reading it back (configuration check). Choose the phase that really supplies the circuit measured by that current channel, so that the meter measures it against the correct voltage.
 
 After the last dialog the Power Meter is created together with all its entities (see [Entities](#-entities)).
 
