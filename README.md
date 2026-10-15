@@ -203,7 +203,7 @@ Select **Modbus Node** as the device type and pick the **connection type**. The 
 | **Baud rate (baudrate)** | `9600`, `19200` or `38400` – the only rates the meter supports. | `9600` |
 | **Data size (bytesize)** | Number of data bits. The JSY-MK-138 always uses **8**. | `8` |
 | **Stop bits (stopbits)** | `1` or `2`. | `1` |
-| **Parity (parity)** | `None`, `Even`, `Odd` (or `Mark`). | `None` |
+| **Parity (parity)** | `None`, `Even`, `Odd`. | `None` |
 | **Delay (delay)** | Reserved for compatibility with the Home Assistant Modbus hub settings. | `1` s |
 | **Message wait (message_wait_millisecond)** | Reserved for compatibility. The integration keeps its own minimum gap of 0.2 s between two packets to the same device. | `50` ms |
 | **Timeout (timeout)** | How long to wait for an answer. | `1` s |
