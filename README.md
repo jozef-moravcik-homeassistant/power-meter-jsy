@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="images/power_meter_jsy_1.jpg" alt="Power Meter JSY" width="360">
+  <img src="https://raw.githubusercontent.com/jozef-moravcik-homeassistant/power-meter-jsy/main/images/power_meter_jsy_1.jpg" alt="Power Meter JSY" width="360">
 </p>
 
 <h1 align="center">⚡ Power Meter JSY for Home Assistant</h1>
@@ -84,7 +84,7 @@ The integration is built for **real-world installations**, not just a single met
 ## 🧩 How it works – the device types
 
 <p align="center">
-  <img src="images/power_meter_jsy_2.jpg" alt="Integration page with a Modbus Node and a Power Meter" width="640">
+  <img src="https://raw.githubusercontent.com/jozef-moravcik-homeassistant/power-meter-jsy/main/images/power_meter_jsy_2.jpg" alt="Integration page with a Modbus Node and a Power Meter" width="640">
 </p>
 
 When you press **Add device** you are asked what kind of device you want to add. The integration deliberately separates *how you connect* from *what you measure*. This is what makes complex installations possible.
@@ -94,7 +94,7 @@ When you press **Add device** you are asked what kind of device you want to add.
 A **Modbus Node** represents **one Modbus line** (one USB/RS485 adapter, one TCP/UDP gateway, or one existing Modbus hub). It holds the connection settings and owns the physical link.
 
 <p align="center">
-  <img src="images/power_meter_jsy_create_device_type_modbus_node_1.jpg" alt="Selecting the Modbus Node device type" width="320">
+  <img src="https://raw.githubusercontent.com/jozef-moravcik-homeassistant/power-meter-jsy/main/images/power_meter_jsy_create_device_type_modbus_node_1.jpg" alt="Selecting the Modbus Node device type" width="320">
 </p>
 
 - It talks to the line **one request at a time**, so any number of Power Meters can safely share it.
@@ -104,7 +104,7 @@ A **Modbus Node** represents **one Modbus line** (one USB/RS485 adapter, one TCP
 ### ⚡ Power Meter – the meter
 
 <p align="center">
-  <img src="images/power_meter_jsy_create_device_type_power_meter_1.jpg" alt="Selecting the Power Meter device type" width="320">
+  <img src="https://raw.githubusercontent.com/jozef-moravcik-homeassistant/power-meter-jsy/main/images/power_meter_jsy_create_device_type_power_meter_1.jpg" alt="Selecting the Power Meter device type" width="320">
 </p>
 
 A **Power Meter** represents **one JSY physical device - power meter**. It is linked to a Modbus Node and has its own **Modbus Device ID** (slave address) and **read interval**. It creates all the measurement sensors and lets you configure the phase assignment of the channels.
@@ -116,7 +116,7 @@ A **Power Meter** represents **one JSY physical device - power meter**. It is li
 
 
 <p align="center">
-  <img src="images/power_meter_jsy_tools_1.jpg" alt="Selecting the Tools device type" width="320">
+  <img src="https://raw.githubusercontent.com/jozef-moravcik-homeassistant/power-meter-jsy/main/images/power_meter_jsy_tools_1.jpg" alt="Selecting the Tools device type" width="320">
 </p>
 
 **Tools** is a wizard, not a device – it never creates anything in Home Assistant. Use it to **change the Modbus Device ID and the communication parameters** (baud rate, data format) that are stored **inside the meter**. It is the way to prepare a brand-new meter (factory settings: ID 1, 9600 baud, 8N1) for a bus that already contains other meters.
@@ -189,7 +189,7 @@ Everything is configured in the user interface – no YAML is needed.
 2. Choose the **device type** and follow the dialogs.
 
 <p align="center">
-  <img src="images/power_meter_jsy_create_device_type_modbus_node_1.jpg" alt="Device type selection" width="420">
+  <img src="https://raw.githubusercontent.com/jozef-moravcik-homeassistant/power-meter-jsy/main/images/power_meter_jsy_create_device_type_modbus_node_1.jpg" alt="Device type selection" width="420">
 </p>
 
 > 🧭 **Recommended order:** create the **Modbus Node(s)** first, then add a **Power Meter** for every meter and select its Node. A Power Meter cannot be added before at least one Modbus Node exists.
@@ -208,7 +208,7 @@ Select **Modbus Node** as the device type and pick the **connection type**. The 
 #### 🔌 USB Port
 
 <p align="center">
-  <img src="images/power_meter_jsy_create_device_type_modbus_node_usb_2.jpg" alt="Modbus USB port settings" width="420">
+  <img src="https://raw.githubusercontent.com/jozef-moravcik-homeassistant/power-meter-jsy/main/images/power_meter_jsy_create_device_type_modbus_node_usb_2.jpg" alt="Modbus USB port settings" width="420">
 </p>
 
 | Field | Description | Default |
@@ -229,9 +229,9 @@ Select **Modbus Node** as the device type and pick the **connection type**. The 
 #### 🌐 TCP Server / 📡 UDP Server
 
 <p align="center">
-  <img src="images/power_meter_jsy_create_device_type_modbus_node_tcp_2.jpg" alt="Modbus TCP settings" width="340">
+  <img src="https://raw.githubusercontent.com/jozef-moravcik-homeassistant/power-meter-jsy/main/images/power_meter_jsy_create_device_type_modbus_node_tcp_2.jpg" alt="Modbus TCP settings" width="340">
   &nbsp;
-  <img src="images/power_meter_jsy_create_device_type_modbus_node_udp_2.jpg" alt="Modbus UDP settings" width="340">
+  <img src="https://raw.githubusercontent.com/jozef-moravcik-homeassistant/power-meter-jsy/main/images/power_meter_jsy_create_device_type_modbus_node_udp_2.jpg" alt="Modbus UDP settings" width="340">
 </p>
 
 | Field | Description | Default |
@@ -245,7 +245,7 @@ Select **Modbus Node** as the device type and pick the **connection type**. The 
 #### 🔗 Existing Modbus Node
 
 <p align="center">
-  <img src="images/power_meter_jsy_create_device_type_modbus_node_modbus_hub_2.jpg" alt="Select an existing Modbus hub" width="420">
+  <img src="https://raw.githubusercontent.com/jozef-moravcik-homeassistant/power-meter-jsy/main/images/power_meter_jsy_create_device_type_modbus_node_modbus_hub_2.jpg" alt="Select an existing Modbus hub" width="420">
 </p>
 
 Select one of the Modbus hubs that are already defined in Home Assistant (the hub `name` from your `modbus:` configuration). All serial/network parameters are then taken from that hub. If no hub exists you will see the message *"No Modbus nodes were found in the system"*.
@@ -270,7 +270,7 @@ Select **Power Meter** as the device type. The dialogs are:
 **1️⃣ Power Meter settings**
 
 <p align="center">
-  <img src="images/power_meter_jsy_create_device_type_power_meter_configuration_1.jpg" alt="Power Meter settings" width="420">
+  <img src="https://raw.githubusercontent.com/jozef-moravcik-homeassistant/power-meter-jsy/main/images/power_meter_jsy_create_device_type_power_meter_configuration_1.jpg" alt="Power Meter settings" width="420">
 </p>
 
 | Field | Description | Default / range |
@@ -286,7 +286,7 @@ When you submit, the integration contacts the meter. If it cannot be read you ge
 **3️⃣ Phase assignment**
 
 <p align="center">
-  <img src="images/power_meter_jsy_create_device_type_power_meter_configuration_2.jpg" alt="Phase assignment" width="420">
+  <img src="https://raw.githubusercontent.com/jozef-moravcik-homeassistant/power-meter-jsy/main/images/power_meter_jsy_create_device_type_power_meter_configuration_2.jpg" alt="Phase assignment" width="420">
 </p>
 
 The JSY-MK-138 measures **up to 12 current channels** against **three voltage inputs (phases A, B and C)**. For each channel, select the phase to which it is connected (**Phase A / B / C**). The physical device allows for very flexible assignment of phases to channels, so you can configure this assignment according to your requirements. When you confirm, any change is **written to the physical device** and verified by reading it back (configuration check). Choose the phase that really supplies the circuit measured by that current channel, so that the meter measures it against the correct voltage.
@@ -306,7 +306,7 @@ Every JSY meter stores its own **Modbus Device ID** and **serial communication p
 The **Tools** wizard changes these values safely and verifies the result.
 
 <p align="center">
-  <img src="images/power_meter_jsy_tools_1.jpg" alt="Tools – device type selection" width="320">
+  <img src="https://raw.githubusercontent.com/jozef-moravcik-homeassistant/power-meter-jsy/main/images/power_meter_jsy_tools_1.jpg" alt="Tools – device type selection" width="320">
 </p>
 
 ### 📖 Supported parameters
@@ -337,7 +337,7 @@ The data formats mean:
 **2️⃣ Choose how you connect to the meter.**
 
 <p align="center">
-  <img src="images/power_meter_jsy_create_device_type_tools_USB_1.jpg" alt="Tools – connection type" width="400">
+  <img src="https://raw.githubusercontent.com/jozef-moravcik-homeassistant/power-meter-jsy/main/images/power_meter_jsy_create_device_type_tools_USB_1.jpg" alt="Tools – connection type" width="400">
 </p>
 
 Choose **USB Port**, **TCP Server**, **UDP Server** or **Existing Modbus Node**. The following dialogs describe the meter's **CURRENT** communication parameters – the ones it uses *right now*.
@@ -345,9 +345,9 @@ Choose **USB Port**, **TCP Server**, **UDP Server** or **Existing Modbus Node**.
 **3️⃣ Enter the CURRENT connection parameters.**
 
 <p align="center">
-  <img src="images/power_meter_jsy_create_device_type_tools_USB_2.jpg" alt="Tools – current USB settings" width="400">
+  <img src="https://raw.githubusercontent.com/jozef-moravcik-homeassistant/power-meter-jsy/main/images/power_meter_jsy_create_device_type_tools_USB_2.jpg" alt="Tools – current USB settings" width="400">
   &nbsp;
-  <img src="images/power_meter_jsy_create_device_type_tools_TCP_1.jpg" alt="Tools – TCP gateway" width="400">
+  <img src="https://raw.githubusercontent.com/jozef-moravcik-homeassistant/power-meter-jsy/main/images/power_meter_jsy_create_device_type_tools_TCP_1.jpg" alt="Tools – TCP gateway" width="400">
 </p>
 
 - **USB** – select the port and enter the **current** baud rate, data size, stop bits and parity of the meter (factory: 9600, 8, 1, None).
@@ -357,7 +357,7 @@ Choose **USB Port**, **TCP Server**, **UDP Server** or **Existing Modbus Node**.
 **4️⃣ Enter the CURRENT Modbus ID of the meter.**
 
 <p align="center">
-  <img src="images/power_meter_jsy_create_device_type_tools_TCP_2.jpg" alt="Tools – current device" width="400">
+  <img src="https://raw.githubusercontent.com/jozef-moravcik-homeassistant/power-meter-jsy/main/images/power_meter_jsy_create_device_type_tools_TCP_2.jpg" alt="Tools – current device" width="400">
 </p>
 
 Enter the ID the meter uses now (a new meter: **1**). The integration reads the meter to prove that the connection and the ID are correct. If it cannot be read you will see *"Cannot read the device. Check the Modbus Node, Modbus ID and wiring."*.
@@ -368,7 +368,7 @@ Enter the ID the meter uses now (a new meter: **1**). The integration reads the 
 **5️⃣ Enter the NEW settings.**
 
 <p align="center">
-  <img src="images/power_meter_jsy_create_device_type_tools_new_communication_parameters.jpg" alt="Tools – new communication settings" width="400">
+  <img src="https://raw.githubusercontent.com/jozef-moravcik-homeassistant/power-meter-jsy/main/images/power_meter_jsy_create_device_type_tools_new_communication_parameters.jpg" alt="Tools – new communication settings" width="400">
 </p>
 
 | Field | Description |
@@ -448,19 +448,19 @@ For **every channel CH01 … CH12** the integration creates six sensors – **72
 The *Total active energy* sensors can be used directly in the **Energy dashboard**.
 
 <p align="center">
-  <img src="images/power_meter_jsy_create_device_type_power_meter_data_1.jpg" alt="Power Meter device page" width="520">
+  <img src="https://raw.githubusercontent.com/jozef-moravcik-homeassistant/power-meter-jsy/main/images/power_meter_jsy_create_device_type_power_meter_data_1.jpg" alt="Power Meter device page" width="520">
 </p>
 
 <details>
 <summary><b>📷 More screenshots of the sensors</b></summary>
 
 <p align="center">
-  <img src="images/power_meter_jsy_create_device_type_power_meter_data_voltage_1.jpg" alt="Voltage sensors" width="170">
-  <img src="images/power_meter_jsy_create_device_type_power_meter_data_current_1.jpg" alt="Current sensors" width="170">
-  <img src="images/power_meter_jsy_create_device_type_power_meter_data_active_power_1.jpg" alt="Active power sensors" width="170">
-  <img src="images/power_meter_jsy_create_device_type_power_meter_data_total_active_energy_1.jpg" alt="Total active energy sensors" width="170">
-  <img src="images/power_meter_jsy_create_device_type_power_meter_data_power_factor_1.jpg" alt="Power factor sensors" width="170">
-  <img src="images/power_meter_jsy_create_device_type_power_meter_data_frequency_1.jpg" alt="Frequency sensors" width="170">
+  <img src="https://raw.githubusercontent.com/jozef-moravcik-homeassistant/power-meter-jsy/main/images/power_meter_jsy_create_device_type_power_meter_data_voltage_1.jpg" alt="Voltage sensors" width="170">
+  <img src="https://raw.githubusercontent.com/jozef-moravcik-homeassistant/power-meter-jsy/main/images/power_meter_jsy_create_device_type_power_meter_data_current_1.jpg" alt="Current sensors" width="170">
+  <img src="https://raw.githubusercontent.com/jozef-moravcik-homeassistant/power-meter-jsy/main/images/power_meter_jsy_create_device_type_power_meter_data_active_power_1.jpg" alt="Active power sensors" width="170">
+  <img src="https://raw.githubusercontent.com/jozef-moravcik-homeassistant/power-meter-jsy/main/images/power_meter_jsy_create_device_type_power_meter_data_total_active_energy_1.jpg" alt="Total active energy sensors" width="170">
+  <img src="https://raw.githubusercontent.com/jozef-moravcik-homeassistant/power-meter-jsy/main/images/power_meter_jsy_create_device_type_power_meter_data_power_factor_1.jpg" alt="Power factor sensors" width="170">
+  <img src="https://raw.githubusercontent.com/jozef-moravcik-homeassistant/power-meter-jsy/main/images/power_meter_jsy_create_device_type_power_meter_data_frequency_1.jpg" alt="Frequency sensors" width="170">
 </p>
 
 </details>
@@ -474,7 +474,7 @@ The *Total active energy* sensors can be used directly in the **Energy dashboard
 ### 🩺 Power Meter – diagnostic sensors
 
 <p align="center">
-  <img src="images/power_meter_jsy_create_device_type_power_meter_data_other_sensors_1.jpg" alt="Diagnostic sensors" width="360">
+  <img src="https://raw.githubusercontent.com/jozef-moravcik-homeassistant/power-meter-jsy/main/images/power_meter_jsy_create_device_type_power_meter_data_other_sensors_1.jpg" alt="Diagnostic sensors" width="360">
 </p>
 
 | Entity | Description | Enabled by default |
@@ -524,7 +524,7 @@ Note that IDs only have to be unique **per line** – `Power Meter 1` and `Power
 Open **Settings → Devices & services → Power Meter JSY**, then use the ⚙️ **Configure** button of the device.
 
 <p align="center">
-  <img src="images/power_meter_jsy_create_device_type_modbus_node_modbus_hub_1.jpg" alt="Reconfiguring a Modbus Node" width="360">
+  <img src="https://raw.githubusercontent.com/jozef-moravcik-homeassistant/power-meter-jsy/main/images/power_meter_jsy_create_device_type_modbus_node_modbus_hub_1.jpg" alt="Reconfiguring a Modbus Node" width="360">
 </p>
 
 - **Modbus Node** – change the connection type and all its parameters. The Node reloads and the Power Meters continue with the new line. The first dialog lists **all Power Meters that use this Node**, so you know what is affected.
