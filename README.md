@@ -623,7 +623,7 @@ This is an independent community project and is not affiliated with the manufact
 - 🐛 **Bugs and feature requests:** [GitHub Issues](https://github.com/jozef-moravcik-homeassistant/power-meter-jsy/issues)
 - 📖 **Documentation:** this page
 - 👤 **Author:** Jozef Moravčík
-- 🏭 **Producer's website:** [JSY Products](https://www.jsypowermeter.com/customized-oem-solar-single-phase-energy-meter-with-rs485-modbus-rtu-20ma-50a-jsy-mk-138-product/)](https://www.jsypowermeter.com/products/)
+- 🏭 **Producer's website:** [JSY Products](https://www.jsypowermeter.com/products/)
 - 🏭 **Product site:** [JSY-MK-138](https://www.jsypowermeter.com/customized-oem-solar-single-phase-energy-meter-with-rs485-modbus-rtu-20ma-50a-jsy-mk-138-product/)
 
 When reporting a problem, please include the Home Assistant version, the integration version, the connection type and a **debug log** (see [Troubleshooting](#-troubleshooting)).
