@@ -26,7 +26,7 @@
 
 - [🎯 Overview](#-overview)
 - [✨ Features](#-features)
-- [🧩 How it works – the three device types](#-how-it-works--the-three-device-types)
+- [🧩 How it works – the device types](#-how-it-works--the-device-types)
 - [💾 Installation](#-installation)
 - [🔩 Configuration](#-configuration)
   - [Step 1 – Add a Modbus Node](#step-1--add-a-modbus-node)
@@ -46,7 +46,7 @@
 
 ## 🎯 Overview
 
-**Power Meter JSY** reads energy-monitoring data from **JSY Power Meter devices (e.i.JSY-MK-138)** multi-channel AC power meters over **Modbus** and exposes it as native Home Assistant sensors – voltage, current, active power, total active energy, power factor and frequency for **each of the measuring channels**. Everything is read locally; no cloud, no account.
+**Power Meter JSY** reads energy-monitoring data from **JSY multi-channel AC power meters (e.g. JSY-MK-138)** over **Modbus** and exposes it as native Home Assistant sensors – voltage, current, active power, total active energy, power factor and frequency for **each of the measuring channels**. Everything is read locally; no cloud, no account.
 
 The integration is built for **real-world installations**, not just a single meter on a single cable. It lets you combine, in one Home Assistant instance, any number of meters that are connected in different ways – for example:
 
