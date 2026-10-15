@@ -307,10 +307,10 @@
     },
     "modbus_parity": {
       "options": {
-        "N": "Žádná",
-        "E": "Sudá",
-        "O": "Lichá",
-        "M": "Mark"
+        "n": "Žádná",
+        "e": "Sudá",
+        "o": "Lichá",
+        "m": "Mark"
       }
     },
     "phase": {
@@ -322,10 +322,10 @@
     },
     "data_format": {
       "options": {
-        "8N1": "8N1 (8 datových bitů, bez parity, 1 stop bit)",
-        "8E1": "8E1 (8 datových bitů, sudá parita, 1 stop bit)",
-        "8O1": "8O1 (8 datových bitů, lichá parita, 1 stop bit)",
-        "8N2": "8N2 (8 datových bitů, bez parity, 2 stop bity)"
+        "8n1": "8N1 (8 datových bitů, bez parity, 1 stop bit)",
+        "8e1": "8E1 (8 datových bitů, sudá parita, 1 stop bit)",
+        "8o1": "8O1 (8 datových bitů, lichá parita, 1 stop bit)",
+        "8n2": "8N2 (8 datových bitů, bez parity, 2 stop bity)"
       }
     }
   },

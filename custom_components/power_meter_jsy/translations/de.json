@@ -307,10 +307,10 @@
     },
     "modbus_parity": {
       "options": {
-        "N": "Keine",
-        "E": "Gerade",
-        "O": "Ungerade",
-        "M": "Mark"
+        "n": "Keine",
+        "e": "Gerade",
+        "o": "Ungerade",
+        "m": "Mark"
       }
     },
     "phase": {
@@ -322,10 +322,10 @@
     },
     "data_format": {
       "options": {
-        "8N1": "8N1 (8 Datenbits, keine Parität, 1 Stoppbit)",
-        "8E1": "8E1 (8 Datenbits, gerade Parität, 1 Stoppbit)",
-        "8O1": "8O1 (8 Datenbits, ungerade Parität, 1 Stoppbit)",
-        "8N2": "8N2 (8 Datenbits, keine Parität, 2 Stoppbits)"
+        "8n1": "8N1 (8 Datenbits, keine Parität, 1 Stoppbit)",
+        "8e1": "8E1 (8 Datenbits, gerade Parität, 1 Stoppbit)",
+        "8o1": "8O1 (8 Datenbits, ungerade Parität, 1 Stoppbit)",
+        "8n2": "8N2 (8 Datenbits, keine Parität, 2 Stoppbits)"
       }
     }
   },

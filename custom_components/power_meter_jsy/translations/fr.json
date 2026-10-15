@@ -307,10 +307,10 @@
     },
     "modbus_parity": {
       "options": {
-        "N": "Aucune",
-        "E": "Paire",
-        "O": "Impaire",
-        "M": "Mark"
+        "n": "Aucune",
+        "e": "Paire",
+        "o": "Impaire",
+        "m": "Mark"
       }
     },
     "phase": {
@@ -322,10 +322,10 @@
     },
     "data_format": {
       "options": {
-        "8N1": "8N1 (8 bits de données, sans parité, 1 bit d'arrêt)",
-        "8E1": "8E1 (8 bits de données, parité paire, 1 bit d'arrêt)",
-        "8O1": "8O1 (8 bits de données, parité impaire, 1 bit d'arrêt)",
-        "8N2": "8N2 (8 bits de données, sans parité, 2 bits d'arrêt)"
+        "8n1": "8N1 (8 bits de données, sans parité, 1 bit d'arrêt)",
+        "8e1": "8E1 (8 bits de données, parité paire, 1 bit d'arrêt)",
+        "8o1": "8O1 (8 bits de données, parité impaire, 1 bit d'arrêt)",
+        "8n2": "8N2 (8 bits de données, sans parité, 2 bits d'arrêt)"
       }
     }
   },

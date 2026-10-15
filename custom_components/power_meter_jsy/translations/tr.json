@@ -307,10 +307,10 @@
     },
     "modbus_parity": {
       "options": {
-        "N": "Yok",
-        "E": "Çift",
-        "O": "Tek",
-        "M": "Mark"
+        "n": "Yok",
+        "e": "Çift",
+        "o": "Tek",
+        "m": "Mark"
       }
     },
     "phase": {
@@ -322,10 +322,10 @@
     },
     "data_format": {
       "options": {
-        "8N1": "8N1 (8 veri biti, eşlik yok, 1 durdurma biti)",
-        "8E1": "8E1 (8 veri biti, çift eşlik, 1 durdurma biti)",
-        "8O1": "8O1 (8 veri biti, tek eşlik, 1 durdurma biti)",
-        "8N2": "8N2 (8 veri biti, eşlik yok, 2 durdurma biti)"
+        "8n1": "8N1 (8 veri biti, eşlik yok, 1 durdurma biti)",
+        "8e1": "8E1 (8 veri biti, çift eşlik, 1 durdurma biti)",
+        "8o1": "8O1 (8 veri biti, tek eşlik, 1 durdurma biti)",
+        "8n2": "8N2 (8 veri biti, eşlik yok, 2 durdurma biti)"
       }
     }
   },

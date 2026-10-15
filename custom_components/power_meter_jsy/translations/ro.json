@@ -307,10 +307,10 @@
     },
     "modbus_parity": {
       "options": {
-        "N": "Fără",
-        "E": "Pară",
-        "O": "Impară",
-        "M": "Mark"
+        "n": "Fără",
+        "e": "Pară",
+        "o": "Impară",
+        "m": "Mark"
       }
     },
     "phase": {
@@ -322,10 +322,10 @@
     },
     "data_format": {
       "options": {
-        "8N1": "8N1 (8 biți de date, fără paritate, 1 bit de stop)",
-        "8E1": "8E1 (8 biți de date, paritate pară, 1 bit de stop)",
-        "8O1": "8O1 (8 biți de date, paritate impară, 1 bit de stop)",
-        "8N2": "8N2 (8 biți de date, fără paritate, 2 biți de stop)"
+        "8n1": "8N1 (8 biți de date, fără paritate, 1 bit de stop)",
+        "8e1": "8E1 (8 biți de date, paritate pară, 1 bit de stop)",
+        "8o1": "8O1 (8 biți de date, paritate impară, 1 bit de stop)",
+        "8n2": "8N2 (8 biți de date, fără paritate, 2 biți de stop)"
       }
     }
   },
