@@ -1,0 +1,375 @@
+{
+  "config": {
+    "step": {
+      "modbus_connection_type": {
+        "title": "Подключение Modbus",
+        "description": "Выберите тип подключения Modbus",
+        "data": {
+          "modbus_connection_type": "Тип подключения"
+        }
+      },
+      "modbus_existing_node": {
+        "title": "Существующий Modbus Node",
+        "description": "Выберите существующий хаб Modbus, определённый в Home Assistant",
+        "data": {
+          "modbus_node_name": "Modbus Node"
+        }
+      },
+      "modbus_usb": {
+        "title": "Modbus – USB-порт (последовательный)",
+        "description": "Настройки последовательного подключения Modbus (USB / RS485). Устройство поддерживает только скорости 9600, 19200 и 38400 бод.",
+        "data": {
+          "port": "USB-порт (port)",
+          "baudrate": "Скорость передачи (baudrate)",
+          "bytesize": "Количество бит данных (bytesize)",
+          "stopbits": "Стоповые биты (stopbits)",
+          "parity": "Чётность (parity)",
+          "delay": "Задержка в секундах (delay)",
+          "message_wait_millisecond": "Ожидание сообщения в миллисекундах (message_wait_millisecond)",
+          "timeout": "Тайм-аут в секундах (timeout)"
+        }
+      },
+      "modbus_tcp": {
+        "title": "Modbus – TCP-сервер",
+        "description": "Настройки подключения Modbus TCP",
+        "data": {
+          "host": "IP-адрес / имя хоста (host)",
+          "port": "Порт (port)",
+          "timeout": "Тайм-аут в секундах (timeout)"
+        }
+      },
+      "modbus_udp": {
+        "title": "Modbus – UDP-сервер",
+        "description": "Настройки подключения Modbus UDP",
+        "data": {
+          "host": "IP-адрес / имя хоста (host)",
+          "port": "Порт (port)",
+          "timeout": "Тайм-аут в секундах (timeout)"
+        }
+      },
+      "power_meter_settings": {
+        "title": "Настройки Power Meter",
+        "description": "Выберите Modbus Node, используемый этим Power Meter, и задайте его Modbus ID. Все значения считываются одним пакетом Modbus.",
+        "data": {
+          "modbus_node_entry_id": "Устройство Modbus Node",
+          "modbus_device_id": "Modbus ID устройства (адрес slave)",
+          "scan_interval": "Интервал опроса (с)"
+        }
+      },
+      "device_type": {
+        "title": "Тип устройства",
+        "description": "Выберите тип устройства, которое хотите добавить",
+        "data": {
+          "device_type": "Тип устройства"
+        }
+      },
+      "power_meter_device_info": {
+        "title": "Параметры устройства",
+        "description": "С устройства считаны следующие параметры:\n\n- **Модель:** {model} (регистр 0x0000 = {model_code})\n\n- **Диапазон напряжения:** {voltage_range} (регистр 0x0002)\n\n- **Диапазон тока:** {current_range} (регистр 0x0003)\n\nПодтвердите, чтобы добавить устройство.",
+        "data": {}
+      },
+      "power_meter_phases": {
+        "title": "Назначение фаз",
+        "description": "Назначьте фазу напряжения каждому токовому каналу устройства {model}. Отображается текущая настройка, считанная с устройства; при подтверждении изменения записываются в устройство.",
+        "data": {
+          "phase_ch01": "Фаза – CH01",
+          "phase_ch02": "Фаза – CH02",
+          "phase_ch03": "Фаза – CH03",
+          "phase_ch04": "Фаза – CH04",
+          "phase_ch05": "Фаза – CH05",
+          "phase_ch06": "Фаза – CH06",
+          "phase_ch07": "Фаза – CH07",
+          "phase_ch08": "Фаза – CH08",
+          "phase_ch09": "Фаза – CH09",
+          "phase_ch10": "Фаза – CH10",
+          "phase_ch11": "Фаза – CH11",
+          "phase_ch12": "Фаза – CH12"
+        }
+      },
+      "tools_device": {
+        "title": "Tools – текущее устройство",
+        "description": "Введите Modbus ID, который устройство использует сейчас (заводская настройка: ID 1, 9600 бод, 8N1). Подключение, указанное на предыдущих шагах, должно соответствовать текущим настройкам связи устройства.\n\n**Запись через broadcast:** новые настройки отправляются на ID 0 и принимаются **ВСЕМИ устройствами на шине**. Если на шине несколько устройств, их ID и параметры связи тоже изменятся – используйте только когда подключено ровно одно устройство.",
+        "data": {
+          "modbus_device_id": "Текущий Modbus ID устройства",
+          "use_broadcast": "Записать через broadcast (ID 0) – ОПАСНО"
+        }
+      },
+      "tools_new_params": {
+        "title": "Tools – новые настройки связи",
+        "description": "Задайте ID и параметры связи, которые будут записаны в устройство. Новый ID не должен использоваться другим устройством на той же шине.",
+        "data": {
+          "new_device_id": "Новый Modbus ID",
+          "new_baudrate": "Новая скорость передачи",
+          "new_data_format": "Новый формат данных"
+        }
+      },
+      "tools_confirm": {
+        "title": "Tools – подтверждение",
+        "description": "**Целевой ID:** {target}\n\n**Модель:** {model}\n\n**Изменение:** ID {old_id} → {new_id}, {old_baud} → {new_baud} бод, {old_format} → {new_format}\n\nЕсли целевой ID равен 0 (broadcast), новые настройки получат ВСЕ устройства на шине.\n\nПосле записи устройство считывается с новыми параметрами для проверки результата. Это может занять несколько секунд.",
+        "data": {}
+      },
+      "tools_connection_type": {
+        "title": "Tools – подключение к устройству",
+        "description": "Выберите, КАК вы подключаетесь к устройству, настройки которого хотите изменить. Следующие окна описывают его ТЕКУЩИЕ параметры связи – новые параметры вводятся на более позднем шаге.",
+        "data": {
+          "modbus_connection_type": "Тип подключения"
+        }
+      },
+      "tools_existing_node": {
+        "title": "Tools – существующий Modbus Node",
+        "description": "Выберите существующий хаб Modbus, определённый в Home Assistant, через который подключено устройство. Скорость и формат определяются этим хабом (ТЕКУЩИЕ настройки устройства).",
+        "data": {
+          "modbus_node_name": "Modbus Node"
+        }
+      },
+      "tools_usb": {
+        "title": "Tools – ТЕКУЩИЕ настройки устройства (USB / RS485)",
+        "description": "Введите ТЕКУЩИЕ параметры связи устройства, то есть те, которые оно использует СЕЙЧАС (заводская настройка: 9600 бод, 8 бит данных, без чётности, 1 стоповый бит). Новые параметры, которые будут записаны в устройство, вводятся на следующем шаге.",
+        "data": {
+          "port": "USB-порт (port)",
+          "baudrate": "ТЕКУЩАЯ скорость передачи устройства (baudrate)",
+          "bytesize": "ТЕКУЩЕЕ количество бит данных (bytesize)",
+          "stopbits": "ТЕКУЩИЕ стоповые биты (stopbits)",
+          "parity": "ТЕКУЩАЯ чётность (parity)",
+          "delay": "Задержка в секундах (delay)",
+          "message_wait_millisecond": "Ожидание сообщения в миллисекундах (message_wait_millisecond)",
+          "timeout": "Тайм-аут в секундах (timeout)"
+        }
+      },
+      "tools_tcp": {
+        "title": "Tools – подключение через TCP-сервер",
+        "description": "Введите адрес TCP-шлюза, через который подключено устройство. Скорость и формат RS485 определяются шлюзом – здесь они не вводятся.",
+        "data": {
+          "host": "IP-адрес / имя хоста (host)",
+          "port": "Порт (port)",
+          "timeout": "Тайм-аут в секундах (timeout)"
+        }
+      },
+      "tools_udp": {
+        "title": "Tools – подключение через UDP-сервер",
+        "description": "Введите адрес UDP-шлюза, через который подключено устройство. Скорость и формат RS485 определяются шлюзом – здесь они не вводятся.",
+        "data": {
+          "host": "IP-адрес / имя хоста (host)",
+          "port": "Порт (port)",
+          "timeout": "Тайм-аут в секундах (timeout)"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Не удалось прочитать устройство. Проверьте Modbus Node, Modbus ID и проводку.",
+      "unknown": "Непредвиденная ошибка",
+      "no_modbus_nodes": "В системе не найдено ни одного узла Modbus. Сначала определите хотя бы один хаб Modbus.",
+      "no_serial_ports": "Свободные последовательные порты не найдены. Возможно, все порты уже используются.",
+      "no_modbus_node_entries": "Не существует ни одного устройства Modbus Node. Сначала создайте хотя бы одно устройство Modbus Node.",
+      "device_id_in_use": "Power Meter с этим Modbus ID уже существует на выбранном Modbus Node.",
+      "node_not_loaded": "Выбранный Modbus Node не загружен. Проверьте устройство Modbus Node.",
+      "write_failed": "Не удалось записать настройки в устройство. Проверьте Modbus Node, Modbus ID и проводку.",
+      "phase_invalid_value": "В устройстве для некоторых каналов указано недопустимое назначение фазы (значение, отличное от A, B или C). Для них отображается фаза A; при отправке выбор будет записан в устройство.",
+      "write_verify_failed": "Устройство не приняло настройки: значения, считанные после записи, отличаются от записанных.",
+      "tools_no_change": "Новые настройки совпадают с текущими."
+    },
+    "abort": {
+      "already_configured": "Устройство уже настроено",
+      "tools_applied": "Готово. Устройство теперь отвечает с параметрами: ID **{new_id}**, **{new_baud}** бод, **{new_format}**.\n\nУстановите такие же параметры последовательной связи (скорость, чётность, стоповые биты) на Modbus Node, используемом этим устройством, или на TCP/UDP-шлюзе, а если устройство используется как Power Meter – укажите новый Modbus ID в конфигурации Power Meter.",
+      "tools_pending": "Устройство подтвердило настройки, но по-прежнему отвечает со СТАРЫМИ настройками (ID {old_id}, {old_baud} бод, {old_format}). Новые настройки могут вступить в силу только после выключения и включения питания устройства. Перезапустите его, а затем используйте: ID {new_id}, {new_baud} бод, {new_format}.",
+      "tools_unreachable": "Устройство не отвечает ни со старыми, ни с новыми настройками, поэтому результат проверить не удалось. Возможно, настройки были применены – попробуйте новые (ID {new_id}, {new_baud} бод, {new_format}). Если устройство совсем недоступно, попробуйте заводские настройки: ID 1, 9600 бод, 8N1.",
+      "tools_unverified": "Настройки отправлены (ID {new_id}, {new_baud} бод, {new_format}). При таком типе подключения (TCP/UDP или существующий хаб Modbus) изменение скорости или формата данных проверить невозможно, так как параметры линии фиксированы. Задайте такие же параметры последовательной связи на шлюзе / хабе Modbus и проверьте, отвечает ли устройство."
+    }
+  },
+  "options": {
+    "step": {
+      "modbus_connection_type": {
+        "title": "Подключение Modbus",
+        "description": "Выберите тип подключения Modbus\n\n**Устройства Power Meter, использующие этот Modbus Node:** {used_by}\n\nЕсли удалить этот Modbus Node, эти устройства перестанут работать.",
+        "data": {
+          "modbus_connection_type": "Тип подключения"
+        }
+      },
+      "modbus_existing_node": {
+        "title": "Существующий Modbus Node",
+        "description": "Выберите существующий хаб Modbus, определённый в Home Assistant",
+        "data": {
+          "modbus_node_name": "Modbus Node"
+        }
+      },
+      "modbus_usb": {
+        "title": "Modbus – USB-порт (последовательный)",
+        "description": "Настройки последовательного подключения Modbus (USB / RS485). Устройство поддерживает только скорости 9600, 19200 и 38400 бод.",
+        "data": {
+          "port": "USB-порт (port)",
+          "baudrate": "Скорость передачи (baudrate)",
+          "bytesize": "Количество бит данных (bytesize)",
+          "stopbits": "Стоповые биты (stopbits)",
+          "parity": "Чётность (parity)",
+          "delay": "Задержка в секундах (delay)",
+          "message_wait_millisecond": "Ожидание сообщения в миллисекундах (message_wait_millisecond)",
+          "timeout": "Тайм-аут в секундах (timeout)"
+        }
+      },
+      "modbus_tcp": {
+        "title": "Modbus – TCP-сервер",
+        "description": "Настройки подключения Modbus TCP",
+        "data": {
+          "host": "IP-адрес / имя хоста (host)",
+          "port": "Порт (port)",
+          "timeout": "Тайм-аут в секундах (timeout)"
+        }
+      },
+      "modbus_udp": {
+        "title": "Modbus – UDP-сервер",
+        "description": "Настройки подключения Modbus UDP",
+        "data": {
+          "host": "IP-адрес / имя хоста (host)",
+          "port": "Порт (port)",
+          "timeout": "Тайм-аут в секундах (timeout)"
+        }
+      },
+      "power_meter_settings": {
+        "title": "Настройки Power Meter",
+        "description": "Выберите Modbus Node, используемый этим Power Meter, и задайте его Modbus ID. Все значения считываются одним пакетом Modbus.",
+        "data": {
+          "modbus_node_entry_id": "Устройство Modbus Node",
+          "modbus_device_id": "Modbus ID устройства (адрес slave)",
+          "scan_interval": "Интервал опроса (с)"
+        }
+      },
+      "power_meter_phases": {
+        "title": "Назначение фаз",
+        "description": "Назначьте фазу напряжения каждому токовому каналу устройства {model}. Отображается текущая настройка, считанная с устройства; при подтверждении изменения записываются в устройство.",
+        "data": {
+          "phase_ch01": "Фаза – CH01",
+          "phase_ch02": "Фаза – CH02",
+          "phase_ch03": "Фаза – CH03",
+          "phase_ch04": "Фаза – CH04",
+          "phase_ch05": "Фаза – CH05",
+          "phase_ch06": "Фаза – CH06",
+          "phase_ch07": "Фаза – CH07",
+          "phase_ch08": "Фаза – CH08",
+          "phase_ch09": "Фаза – CH09",
+          "phase_ch10": "Фаза – CH10",
+          "phase_ch11": "Фаза – CH11",
+          "phase_ch12": "Фаза – CH12"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Не удалось прочитать устройство. Проверьте Modbus Node, Modbus ID и проводку.",
+      "unknown": "Непредвиденная ошибка",
+      "no_modbus_nodes": "В системе не найдено ни одного узла Modbus. Сначала определите хотя бы один хаб Modbus.",
+      "no_serial_ports": "Свободные последовательные порты не найдены. Возможно, все порты уже используются.",
+      "no_modbus_node_entries": "Не существует ни одного устройства Modbus Node. Сначала создайте хотя бы одно устройство Modbus Node.",
+      "device_id_in_use": "Power Meter с этим Modbus ID уже существует на выбранном Modbus Node.",
+      "node_not_loaded": "Выбранный Modbus Node не загружен. Проверьте устройство Modbus Node.",
+      "write_failed": "Не удалось записать настройки в устройство. Проверьте Modbus Node, Modbus ID и проводку.",
+      "phase_invalid_value": "В устройстве для некоторых каналов указано недопустимое назначение фазы (значение, отличное от A, B или C). Для них отображается фаза A; при отправке выбор будет записан в устройство.",
+      "write_verify_failed": "Устройство не приняло настройки: значения, считанные после записи, отличаются от записанных."
+    },
+    "abort": {
+      "already_configured": "Устройство уже настроено"
+    }
+  },
+  "selector": {
+    "device_type": {
+      "options": {
+        "modbus_node": "Modbus Node",
+        "power_meter": "Power Meter",
+        "tools": "Tools – смена ID устройства / параметров связи (мастер)"
+      }
+    },
+    "modbus_connection_type": {
+      "options": {
+        "existing_node": "Существующий Modbus Node",
+        "usb": "USB-порт",
+        "tcp": "TCP-сервер",
+        "udp": "UDP-сервер"
+      }
+    },
+    "modbus_baudrate": {
+      "options": {
+        "9600": "9600",
+        "19200": "19200",
+        "38400": "38400"
+      }
+    },
+    "modbus_bytesize": {
+      "options": {
+        "5": "5",
+        "6": "6",
+        "7": "7",
+        "8": "8"
+      }
+    },
+    "modbus_stopbits": {
+      "options": {
+        "1": "1",
+        "2": "2"
+      }
+    },
+    "modbus_parity": {
+      "options": {
+        "N": "Нет",
+        "E": "Чётная",
+        "O": "Нечётная",
+        "M": "Mark"
+      }
+    },
+    "phase": {
+      "options": {
+        "a": "Фаза A",
+        "b": "Фаза B",
+        "c": "Фаза C"
+      }
+    },
+    "data_format": {
+      "options": {
+        "8N1": "8N1 (8 бит данных, без чётности, 1 стоповый бит)",
+        "8E1": "8E1 (8 бит данных, чётная чётность, 1 стоповый бит)",
+        "8O1": "8O1 (8 бит данных, нечётная чётность, 1 стоповый бит)",
+        "8N2": "8N2 (8 бит данных, без чётности, 2 стоповых бита)"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "error_code": {
+        "name": "Код ошибки"
+      },
+      "raw_data": {
+        "name": "Необработанные данные"
+      },
+      "model": {
+        "name": "Модель"
+      },
+      "voltage_range": {
+        "name": "Диапазон напряжения"
+      },
+      "circuit_range": {
+        "name": "Диапазон тока"
+      },
+      "channel_voltage": {
+        "name": "Напряжение - CH{channel}"
+      },
+      "channel_current": {
+        "name": "Ток - CH{channel}"
+      },
+      "channel_power": {
+        "name": "Активная мощность - CH{channel}"
+      },
+      "channel_energy": {
+        "name": "Общая активная энергия - CH{channel}"
+      },
+      "channel_power_factor": {
+        "name": "Коэффициент мощности - CH{channel}"
+      },
+      "channel_frequency": {
+        "name": "Частота - CH{channel}"
+      }
+    }
+  },
+  "issues": {
+    "node_missing": {
+      "title": "Отсутствует Modbus Node для {meter}",
+      "description": "Power Meter **{meter}** использует Modbus Node, которого больше не существует, поэтому не может считывать данные. Создайте новый Modbus Node и выберите его в конфигурации этого Power Meter."
+    }
+  }
+}

@@ -1,0 +1,375 @@
+{
+  "config": {
+    "step": {
+      "modbus_connection_type": {
+        "title": "Conexiune Modbus",
+        "description": "Selectați tipul conexiunii Modbus",
+        "data": {
+          "modbus_connection_type": "Tip conexiune"
+        }
+      },
+      "modbus_existing_node": {
+        "title": "Modbus Node existent",
+        "description": "Selectați un hub Modbus existent, definit în Home Assistant",
+        "data": {
+          "modbus_node_name": "Modbus Node"
+        }
+      },
+      "modbus_usb": {
+        "title": "Modbus – port USB (serial)",
+        "description": "Setări pentru conexiunea serială Modbus (USB / RS485). Dispozitivul acceptă doar vitezele 9600, 19200 și 38400 baud.",
+        "data": {
+          "port": "Port USB (port)",
+          "baudrate": "Viteză de transmisie (baudrate)",
+          "bytesize": "Biți de date (bytesize)",
+          "stopbits": "Biți de stop (stopbits)",
+          "parity": "Paritate (parity)",
+          "delay": "Întârziere în secunde (delay)",
+          "message_wait_millisecond": "Așteptare mesaj în milisecunde (message_wait_millisecond)",
+          "timeout": "Timeout în secunde (timeout)"
+        }
+      },
+      "modbus_tcp": {
+        "title": "Modbus – server TCP",
+        "description": "Setări pentru conexiunea Modbus TCP",
+        "data": {
+          "host": "Adresă IP / nume gazdă (host)",
+          "port": "Port (port)",
+          "timeout": "Timeout în secunde (timeout)"
+        }
+      },
+      "modbus_udp": {
+        "title": "Modbus – server UDP",
+        "description": "Setări pentru conexiunea Modbus UDP",
+        "data": {
+          "host": "Adresă IP / nume gazdă (host)",
+          "port": "Port (port)",
+          "timeout": "Timeout în secunde (timeout)"
+        }
+      },
+      "power_meter_settings": {
+        "title": "Setări Power Meter",
+        "description": "Selectați Modbus Node folosit de acest Power Meter și setați ID-ul Modbus al acestuia. Toate valorile sunt citite cu un singur pachet Modbus.",
+        "data": {
+          "modbus_node_entry_id": "Dispozitiv Modbus Node",
+          "modbus_device_id": "ID dispozitiv Modbus (adresă slave)",
+          "scan_interval": "Interval de citire (s)"
+        }
+      },
+      "device_type": {
+        "title": "Tip dispozitiv",
+        "description": "Selectați tipul dispozitivului pe care doriți să îl adăugați",
+        "data": {
+          "device_type": "Tip dispozitiv"
+        }
+      },
+      "power_meter_device_info": {
+        "title": "Parametrii dispozitivului",
+        "description": "De pe dispozitiv au fost citiți următorii parametri:\n\n- **Model:** {model} (registrul 0x0000 = {model_code})\n\n- **Domeniu de tensiune:** {voltage_range} (registrul 0x0002)\n\n- **Domeniu de curent:** {current_range} (registrul 0x0003)\n\nConfirmați pentru a adăuga dispozitivul.",
+        "data": {}
+      },
+      "power_meter_phases": {
+        "title": "Atribuirea fazelor",
+        "description": "Atribuiți o fază de tensiune fiecărui canal de curent al dispozitivului {model}. Este afișată setarea curentă citită de pe dispozitiv; confirmarea scrie eventualele modificări în dispozitiv.",
+        "data": {
+          "phase_ch01": "Faza – CH01",
+          "phase_ch02": "Faza – CH02",
+          "phase_ch03": "Faza – CH03",
+          "phase_ch04": "Faza – CH04",
+          "phase_ch05": "Faza – CH05",
+          "phase_ch06": "Faza – CH06",
+          "phase_ch07": "Faza – CH07",
+          "phase_ch08": "Faza – CH08",
+          "phase_ch09": "Faza – CH09",
+          "phase_ch10": "Faza – CH10",
+          "phase_ch11": "Faza – CH11",
+          "phase_ch12": "Faza – CH12"
+        }
+      },
+      "tools_device": {
+        "title": "Tools – dispozitivul curent",
+        "description": "Introduceți ID-ul Modbus pe care îl folosește în prezent dispozitivul (setare din fabrică: ID 1, 9600 baud, 8N1). Conexiunea introdusă în pașii anteriori trebuie să corespundă setărilor curente de comunicație ale dispozitivului.\n\n**Scriere prin broadcast:** noile setări sunt trimise la ID 0 și sunt primite de **TOATE dispozitivele de pe magistrală**. Dacă pe magistrală se află mai multe dispozitive, se vor schimba și ID-ul și setările lor de comunicație – folosiți-o doar când este conectat exact un dispozitiv.",
+        "data": {
+          "modbus_device_id": "ID-ul Modbus curent al dispozitivului",
+          "use_broadcast": "Scriere prin broadcast (ID 0) – PERICULOS"
+        }
+      },
+      "tools_new_params": {
+        "title": "Tools – noile setări de comunicație",
+        "description": "Setați ID-ul și parametrii de comunicație care vor fi scriși în dispozitiv. Noul ID nu trebuie să fie folosit de alt dispozitiv de pe aceeași magistrală.",
+        "data": {
+          "new_device_id": "ID Modbus nou",
+          "new_baudrate": "Viteză de transmisie nouă",
+          "new_data_format": "Format de date nou"
+        }
+      },
+      "tools_confirm": {
+        "title": "Tools – confirmare",
+        "description": "**ID țintă:** {target}\n\n**Model:** {model}\n\n**Modificare:** ID {old_id} → {new_id}, {old_baud} → {new_baud} baud, {old_format} → {new_format}\n\nDacă ID-ul țintă este 0 (broadcast), TOATE dispozitivele de pe magistrală primesc noile setări.\n\nDupă scriere, dispozitivul este citit cu noii parametri pentru a verifica rezultatul. Acest lucru poate dura câteva secunde.",
+        "data": {}
+      },
+      "tools_connection_type": {
+        "title": "Tools – conexiunea la dispozitiv",
+        "description": "Alegeți CUM vă conectați la dispozitivul ale cărui setări doriți să le modificați. Ferestrele următoare descriu parametrii lui de comunicație ACTUALI – noii parametri se introduc într-un pas ulterior.",
+        "data": {
+          "modbus_connection_type": "Tip conexiune"
+        }
+      },
+      "tools_existing_node": {
+        "title": "Tools – Modbus Node existent",
+        "description": "Selectați hubul Modbus existent, definit în Home Assistant, prin care este conectat dispozitivul. Viteza și formatul sunt determinate de acest hub (setările ACTUALE ale dispozitivului).",
+        "data": {
+          "modbus_node_name": "Modbus Node"
+        }
+      },
+      "tools_usb": {
+        "title": "Tools – setările ACTUALE ale dispozitivului (USB / RS485)",
+        "description": "Introduceți parametrii de comunicație ACTUALI ai dispozitivului, adică cei pe care îi folosește ACUM (setare din fabrică: 9600 baud, 8 biți de date, fără paritate, 1 bit de stop). Noii parametri care vor fi scriși în dispozitiv se introduc în pasul următor.",
+        "data": {
+          "port": "Port USB (port)",
+          "baudrate": "Viteza de transmisie ACTUALĂ a dispozitivului (baudrate)",
+          "bytesize": "Biții de date ACTUALI (bytesize)",
+          "stopbits": "Biții de stop ACTUALI (stopbits)",
+          "parity": "Paritatea ACTUALĂ (parity)",
+          "delay": "Întârziere în secunde (delay)",
+          "message_wait_millisecond": "Așteptare mesaj în milisecunde (message_wait_millisecond)",
+          "timeout": "Timeout în secunde (timeout)"
+        }
+      },
+      "tools_tcp": {
+        "title": "Tools – conexiune prin server TCP",
+        "description": "Introduceți adresa gateway-ului TCP prin care este conectat dispozitivul. Viteza și formatul RS485 sunt determinate de gateway – nu se introduc aici.",
+        "data": {
+          "host": "Adresă IP / nume gazdă (host)",
+          "port": "Port (port)",
+          "timeout": "Timeout în secunde (timeout)"
+        }
+      },
+      "tools_udp": {
+        "title": "Tools – conexiune prin server UDP",
+        "description": "Introduceți adresa gateway-ului UDP prin care este conectat dispozitivul. Viteza și formatul RS485 sunt determinate de gateway – nu se introduc aici.",
+        "data": {
+          "host": "Adresă IP / nume gazdă (host)",
+          "port": "Port (port)",
+          "timeout": "Timeout în secunde (timeout)"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Dispozitivul nu poate fi citit. Verificați Modbus Node, ID-ul Modbus și cablajul.",
+      "unknown": "Eroare neașteptată",
+      "no_modbus_nodes": "Nu au fost găsite noduri Modbus în sistem. Definiți mai întâi cel puțin un hub Modbus.",
+      "no_serial_ports": "Nu au fost găsite porturi seriale libere. Este posibil ca toate porturile să fie deja folosite.",
+      "no_modbus_node_entries": "Nu există niciun dispozitiv Modbus Node. Creați mai întâi cel puțin un dispozitiv Modbus Node.",
+      "device_id_in_use": "Pe Modbus Node-ul selectat există deja un Power Meter cu acest ID Modbus.",
+      "node_not_loaded": "Modbus Node-ul selectat nu este încărcat. Verificați dispozitivul Modbus Node.",
+      "write_failed": "Setările nu pot fi scrise în dispozitiv. Verificați Modbus Node, ID-ul Modbus și cablajul.",
+      "phase_invalid_value": "Dispozitivul conține o atribuire de fază invalidă pentru unele canale (o valoare alta decât A, B sau C). Pentru ele este afișată faza A; la trimitere, selecția este scrisă în dispozitiv.",
+      "write_verify_failed": "Dispozitivul nu a acceptat setările: valorile citite înapoi după scriere diferă de cele scrise.",
+      "tools_no_change": "Noile setări sunt identice cu cele curente."
+    },
+    "abort": {
+      "already_configured": "Dispozitivul este deja configurat",
+      "tools_applied": "Gata. Dispozitivul răspunde acum cu: ID **{new_id}**, **{new_baud}** baud, **{new_format}**.\n\nSetați aceiași parametri seriali (viteză, paritate, biți de stop) pe Modbus Node-ul folosit de acest dispozitiv – sau pe gateway-ul TCP/UDP – iar dacă dispozitivul este folosit ca Power Meter, setați noul ID Modbus în configurația Power Meter.",
+      "tools_pending": "Dispozitivul a confirmat setările, dar încă răspunde cu setările VECHI (ID {old_id}, {old_baud} baud, {old_format}). Noile setări pot intra în vigoare abia după oprirea și repornirea alimentării dispozitivului. Reporniți-l și apoi folosiți: ID {new_id}, {new_baud} baud, {new_format}.",
+      "tools_unreachable": "Dispozitivul nu răspunde nici cu setările vechi, nici cu cele noi, deci rezultatul nu a putut fi verificat. Este posibil ca setările să fi fost aplicate – încercați-le pe cele noi (ID {new_id}, {new_baud} baud, {new_format}). Dacă dispozitivul nu poate fi contactat deloc, încercați setările din fabrică: ID 1, 9600 baud, 8N1.",
+      "tools_unverified": "Setările au fost trimise (ID {new_id}, {new_baud} baud, {new_format}). Printr-un asemenea tip de conexiune (TCP/UDP sau un hub Modbus existent) modificarea vitezei sau a formatului de date nu poate fi verificată, deoarece setările legăturii sunt fixe. Setați aceiași parametri seriali pe gateway / hubul Modbus și verificați dacă dispozitivul răspunde."
+    }
+  },
+  "options": {
+    "step": {
+      "modbus_connection_type": {
+        "title": "Conexiune Modbus",
+        "description": "Selectați tipul conexiunii Modbus\n\n**Dispozitive Power Meter care folosesc acest Modbus Node:** {used_by}\n\nDacă eliminați acest Modbus Node, aceste dispozitive nu vor mai funcționa.",
+        "data": {
+          "modbus_connection_type": "Tip conexiune"
+        }
+      },
+      "modbus_existing_node": {
+        "title": "Modbus Node existent",
+        "description": "Selectați un hub Modbus existent, definit în Home Assistant",
+        "data": {
+          "modbus_node_name": "Modbus Node"
+        }
+      },
+      "modbus_usb": {
+        "title": "Modbus – port USB (serial)",
+        "description": "Setări pentru conexiunea serială Modbus (USB / RS485). Dispozitivul acceptă doar vitezele 9600, 19200 și 38400 baud.",
+        "data": {
+          "port": "Port USB (port)",
+          "baudrate": "Viteză de transmisie (baudrate)",
+          "bytesize": "Biți de date (bytesize)",
+          "stopbits": "Biți de stop (stopbits)",
+          "parity": "Paritate (parity)",
+          "delay": "Întârziere în secunde (delay)",
+          "message_wait_millisecond": "Așteptare mesaj în milisecunde (message_wait_millisecond)",
+          "timeout": "Timeout în secunde (timeout)"
+        }
+      },
+      "modbus_tcp": {
+        "title": "Modbus – server TCP",
+        "description": "Setări pentru conexiunea Modbus TCP",
+        "data": {
+          "host": "Adresă IP / nume gazdă (host)",
+          "port": "Port (port)",
+          "timeout": "Timeout în secunde (timeout)"
+        }
+      },
+      "modbus_udp": {
+        "title": "Modbus – server UDP",
+        "description": "Setări pentru conexiunea Modbus UDP",
+        "data": {
+          "host": "Adresă IP / nume gazdă (host)",
+          "port": "Port (port)",
+          "timeout": "Timeout în secunde (timeout)"
+        }
+      },
+      "power_meter_settings": {
+        "title": "Setări Power Meter",
+        "description": "Selectați Modbus Node folosit de acest Power Meter și setați ID-ul Modbus al acestuia. Toate valorile sunt citite cu un singur pachet Modbus.",
+        "data": {
+          "modbus_node_entry_id": "Dispozitiv Modbus Node",
+          "modbus_device_id": "ID dispozitiv Modbus (adresă slave)",
+          "scan_interval": "Interval de citire (s)"
+        }
+      },
+      "power_meter_phases": {
+        "title": "Atribuirea fazelor",
+        "description": "Atribuiți o fază de tensiune fiecărui canal de curent al dispozitivului {model}. Este afișată setarea curentă citită de pe dispozitiv; confirmarea scrie eventualele modificări în dispozitiv.",
+        "data": {
+          "phase_ch01": "Faza – CH01",
+          "phase_ch02": "Faza – CH02",
+          "phase_ch03": "Faza – CH03",
+          "phase_ch04": "Faza – CH04",
+          "phase_ch05": "Faza – CH05",
+          "phase_ch06": "Faza – CH06",
+          "phase_ch07": "Faza – CH07",
+          "phase_ch08": "Faza – CH08",
+          "phase_ch09": "Faza – CH09",
+          "phase_ch10": "Faza – CH10",
+          "phase_ch11": "Faza – CH11",
+          "phase_ch12": "Faza – CH12"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Dispozitivul nu poate fi citit. Verificați Modbus Node, ID-ul Modbus și cablajul.",
+      "unknown": "Eroare neașteptată",
+      "no_modbus_nodes": "Nu au fost găsite noduri Modbus în sistem. Definiți mai întâi cel puțin un hub Modbus.",
+      "no_serial_ports": "Nu au fost găsite porturi seriale libere. Este posibil ca toate porturile să fie deja folosite.",
+      "no_modbus_node_entries": "Nu există niciun dispozitiv Modbus Node. Creați mai întâi cel puțin un dispozitiv Modbus Node.",
+      "device_id_in_use": "Pe Modbus Node-ul selectat există deja un Power Meter cu acest ID Modbus.",
+      "node_not_loaded": "Modbus Node-ul selectat nu este încărcat. Verificați dispozitivul Modbus Node.",
+      "write_failed": "Setările nu pot fi scrise în dispozitiv. Verificați Modbus Node, ID-ul Modbus și cablajul.",
+      "phase_invalid_value": "Dispozitivul conține o atribuire de fază invalidă pentru unele canale (o valoare alta decât A, B sau C). Pentru ele este afișată faza A; la trimitere, selecția este scrisă în dispozitiv.",
+      "write_verify_failed": "Dispozitivul nu a acceptat setările: valorile citite înapoi după scriere diferă de cele scrise."
+    },
+    "abort": {
+      "already_configured": "Dispozitivul este deja configurat"
+    }
+  },
+  "selector": {
+    "device_type": {
+      "options": {
+        "modbus_node": "Modbus Node",
+        "power_meter": "Power Meter",
+        "tools": "Tools – modificarea ID-ului dispozitivului / setărilor de comunicație (asistent)"
+      }
+    },
+    "modbus_connection_type": {
+      "options": {
+        "existing_node": "Modbus Node existent",
+        "usb": "Port USB",
+        "tcp": "Server TCP",
+        "udp": "Server UDP"
+      }
+    },
+    "modbus_baudrate": {
+      "options": {
+        "9600": "9600",
+        "19200": "19200",
+        "38400": "38400"
+      }
+    },
+    "modbus_bytesize": {
+      "options": {
+        "5": "5",
+        "6": "6",
+        "7": "7",
+        "8": "8"
+      }
+    },
+    "modbus_stopbits": {
+      "options": {
+        "1": "1",
+        "2": "2"
+      }
+    },
+    "modbus_parity": {
+      "options": {
+        "N": "Fără",
+        "E": "Pară",
+        "O": "Impară",
+        "M": "Mark"
+      }
+    },
+    "phase": {
+      "options": {
+        "a": "Faza A",
+        "b": "Faza B",
+        "c": "Faza C"
+      }
+    },
+    "data_format": {
+      "options": {
+        "8N1": "8N1 (8 biți de date, fără paritate, 1 bit de stop)",
+        "8E1": "8E1 (8 biți de date, paritate pară, 1 bit de stop)",
+        "8O1": "8O1 (8 biți de date, paritate impară, 1 bit de stop)",
+        "8N2": "8N2 (8 biți de date, fără paritate, 2 biți de stop)"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "error_code": {
+        "name": "Cod de eroare"
+      },
+      "raw_data": {
+        "name": "Date brute"
+      },
+      "model": {
+        "name": "Model"
+      },
+      "voltage_range": {
+        "name": "Domeniu de tensiune"
+      },
+      "circuit_range": {
+        "name": "Domeniu de curent"
+      },
+      "channel_voltage": {
+        "name": "Tensiune - CH{channel}"
+      },
+      "channel_current": {
+        "name": "Curent - CH{channel}"
+      },
+      "channel_power": {
+        "name": "Putere activă - CH{channel}"
+      },
+      "channel_energy": {
+        "name": "Energie activă totală - CH{channel}"
+      },
+      "channel_power_factor": {
+        "name": "Factor de putere - CH{channel}"
+      },
+      "channel_frequency": {
+        "name": "Frecvență - CH{channel}"
+      }
+    }
+  },
+  "issues": {
+    "node_missing": {
+      "title": "Lipsește Modbus Node pentru {meter}",
+      "description": "Power Meter **{meter}** folosește un Modbus Node care nu mai există, deci nu poate citi date. Creați un nou Modbus Node și selectați-l în configurația acestui Power Meter."
+    }
+  }
+}

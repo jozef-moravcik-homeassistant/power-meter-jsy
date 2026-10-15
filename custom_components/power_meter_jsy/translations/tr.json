@@ -1,0 +1,375 @@
+{
+  "config": {
+    "step": {
+      "modbus_connection_type": {
+        "title": "Modbus bağlantısı",
+        "description": "Modbus bağlantı türünü seçin",
+        "data": {
+          "modbus_connection_type": "Bağlantı türü"
+        }
+      },
+      "modbus_existing_node": {
+        "title": "Mevcut Modbus Node",
+        "description": "Home Assistant'ta tanımlı mevcut bir Modbus hub'ını seçin",
+        "data": {
+          "modbus_node_name": "Modbus Node"
+        }
+      },
+      "modbus_usb": {
+        "title": "Modbus – USB portu (seri)",
+        "description": "Modbus seri (USB / RS485) bağlantı ayarları. Cihaz yalnızca 9600, 19200 ve 38400 baud hızlarını destekler.",
+        "data": {
+          "port": "USB portu (port)",
+          "baudrate": "Baud hızı (baudrate)",
+          "bytesize": "Veri biti (bytesize)",
+          "stopbits": "Durdurma biti (stopbits)",
+          "parity": "Eşlik (parity)",
+          "delay": "Saniye cinsinden gecikme (delay)",
+          "message_wait_millisecond": "Milisaniye cinsinden mesaj bekleme süresi (message_wait_millisecond)",
+          "timeout": "Saniye cinsinden zaman aşımı (timeout)"
+        }
+      },
+      "modbus_tcp": {
+        "title": "Modbus – TCP sunucusu",
+        "description": "Modbus TCP bağlantı ayarları",
+        "data": {
+          "host": "IP adresi / ana bilgisayar adı (host)",
+          "port": "Port (port)",
+          "timeout": "Saniye cinsinden zaman aşımı (timeout)"
+        }
+      },
+      "modbus_udp": {
+        "title": "Modbus – UDP sunucusu",
+        "description": "Modbus UDP bağlantı ayarları",
+        "data": {
+          "host": "IP adresi / ana bilgisayar adı (host)",
+          "port": "Port (port)",
+          "timeout": "Saniye cinsinden zaman aşımı (timeout)"
+        }
+      },
+      "power_meter_settings": {
+        "title": "Power Meter ayarları",
+        "description": "Bu Power Meter'ın kullandığı Modbus Node'u seçin ve Modbus kimliğini ayarlayın. Tüm değerler tek bir Modbus paketiyle okunur.",
+        "data": {
+          "modbus_node_entry_id": "Modbus Node cihazı",
+          "modbus_device_id": "Modbus cihaz kimliği (slave adresi)",
+          "scan_interval": "Okuma aralığı (sn)"
+        }
+      },
+      "device_type": {
+        "title": "Cihaz türü",
+        "description": "Eklemek istediğiniz cihazın türünü seçin",
+        "data": {
+          "device_type": "Cihaz türü"
+        }
+      },
+      "power_meter_device_info": {
+        "title": "Cihaz parametreleri",
+        "description": "Cihazdan aşağıdaki parametreler okundu:\n\n- **Model:** {model} (kayıt 0x0000 = {model_code})\n\n- **Gerilim aralığı:** {voltage_range} (kayıt 0x0002)\n\n- **Akım aralığı:** {current_range} (kayıt 0x0003)\n\nCihazı eklemek için onaylayın.",
+        "data": {}
+      },
+      "power_meter_phases": {
+        "title": "Faz ataması",
+        "description": "{model} cihazının her akım kanalına bir gerilim fazı atayın. Cihazdan okunan geçerli ayar gösterilir; onaylamak, yapılan değişiklikleri cihaza yazar.",
+        "data": {
+          "phase_ch01": "Faz – CH01",
+          "phase_ch02": "Faz – CH02",
+          "phase_ch03": "Faz – CH03",
+          "phase_ch04": "Faz – CH04",
+          "phase_ch05": "Faz – CH05",
+          "phase_ch06": "Faz – CH06",
+          "phase_ch07": "Faz – CH07",
+          "phase_ch08": "Faz – CH08",
+          "phase_ch09": "Faz – CH09",
+          "phase_ch10": "Faz – CH10",
+          "phase_ch11": "Faz – CH11",
+          "phase_ch12": "Faz – CH12"
+        }
+      },
+      "tools_device": {
+        "title": "Tools – mevcut cihaz",
+        "description": "Cihazın şu anda kullandığı Modbus kimliğini girin (fabrika ayarı: ID 1, 9600 baud, 8N1). Önceki adımlarda girilen bağlantı, cihazın mevcut iletişim ayarlarıyla eşleşmelidir.\n\n**Broadcast ile yazma:** yeni ayarlar ID 0'a gönderilir ve **veri yolundaki TÜM cihazlar** tarafından alınır. Veri yolunu birden fazla cihaz paylaşıyorsa, onların kimliği ve iletişim ayarları da değişir – yalnızca tam olarak bir cihaz bağlıyken kullanın.",
+        "data": {
+          "modbus_device_id": "Cihazın mevcut Modbus kimliği",
+          "use_broadcast": "Broadcast ile yaz (ID 0) – TEHLİKELİ"
+        }
+      },
+      "tools_new_params": {
+        "title": "Tools – yeni iletişim ayarları",
+        "description": "Cihaza yazılacak kimliği ve iletişim parametrelerini ayarlayın. Yeni kimlik, aynı veri yolundaki başka bir cihaz tarafından kullanılmamalıdır.",
+        "data": {
+          "new_device_id": "Yeni Modbus kimliği",
+          "new_baudrate": "Yeni baud hızı",
+          "new_data_format": "Yeni veri formatı"
+        }
+      },
+      "tools_confirm": {
+        "title": "Tools – onay",
+        "description": "**Hedef ID:** {target}\n\n**Model:** {model}\n\n**Değişiklik:** ID {old_id} → {new_id}, {old_baud} → {new_baud} baud, {old_format} → {new_format}\n\nHedef ID 0 (broadcast) ise veri yolundaki TÜM cihazlar yeni ayarları alır.\n\nYazma işleminden sonra sonucu doğrulamak için cihaz yeni parametrelerle okunur. Bu birkaç saniye sürebilir.",
+        "data": {}
+      },
+      "tools_connection_type": {
+        "title": "Tools – cihaza bağlantı",
+        "description": "Ayarlarını değiştirmek istediğiniz cihaza NASIL bağlanacağınızı seçin. Sonraki pencereler cihazın MEVCUT iletişim parametrelerini tanımlar – yeni parametreler daha sonraki bir adımda girilir.",
+        "data": {
+          "modbus_connection_type": "Bağlantı türü"
+        }
+      },
+      "tools_existing_node": {
+        "title": "Tools – mevcut Modbus Node",
+        "description": "Cihazın bağlı olduğu, Home Assistant'ta tanımlı mevcut Modbus hub'ını seçin. Hız ve format bu hub tarafından belirlenir (cihazın MEVCUT ayarları).",
+        "data": {
+          "modbus_node_name": "Modbus Node"
+        }
+      },
+      "tools_usb": {
+        "title": "Tools – cihazın MEVCUT ayarları (USB / RS485)",
+        "description": "Cihazın MEVCUT iletişim parametrelerini, yani şu anda KULLANDIĞI parametreleri girin (fabrika ayarı: 9600 baud, 8 veri biti, eşlik yok, 1 durdurma biti). Cihaza yazılacak yeni parametreler bir sonraki adımda girilir.",
+        "data": {
+          "port": "USB portu (port)",
+          "baudrate": "Cihazın MEVCUT baud hızı (baudrate)",
+          "bytesize": "MEVCUT veri biti (bytesize)",
+          "stopbits": "MEVCUT durdurma biti (stopbits)",
+          "parity": "MEVCUT eşlik (parity)",
+          "delay": "Saniye cinsinden gecikme (delay)",
+          "message_wait_millisecond": "Milisaniye cinsinden mesaj bekleme süresi (message_wait_millisecond)",
+          "timeout": "Saniye cinsinden zaman aşımı (timeout)"
+        }
+      },
+      "tools_tcp": {
+        "title": "Tools – TCP sunucusu üzerinden bağlantı",
+        "description": "Cihazın bağlı olduğu TCP ağ geçidinin adresini girin. RS485 hızı ve formatı ağ geçidi tarafından belirlenir – burada girilmez.",
+        "data": {
+          "host": "IP adresi / ana bilgisayar adı (host)",
+          "port": "Port (port)",
+          "timeout": "Saniye cinsinden zaman aşımı (timeout)"
+        }
+      },
+      "tools_udp": {
+        "title": "Tools – UDP sunucusu üzerinden bağlantı",
+        "description": "Cihazın bağlı olduğu UDP ağ geçidinin adresini girin. RS485 hızı ve formatı ağ geçidi tarafından belirlenir – burada girilmez.",
+        "data": {
+          "host": "IP adresi / ana bilgisayar adı (host)",
+          "port": "Port (port)",
+          "timeout": "Saniye cinsinden zaman aşımı (timeout)"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Cihaz okunamıyor. Modbus Node'u, Modbus kimliğini ve kablolamayı kontrol edin.",
+      "unknown": "Beklenmeyen hata",
+      "no_modbus_nodes": "Sistemde hiç Modbus düğümü bulunamadı. Önce en az bir Modbus hub'ı tanımlayın.",
+      "no_serial_ports": "Boş seri port bulunamadı. Tüm portlar zaten kullanımda olabilir.",
+      "no_modbus_node_entries": "Hiç Modbus Node cihazı yok. Önce en az bir Modbus Node cihazı oluşturun.",
+      "device_id_in_use": "Seçilen Modbus Node üzerinde bu Modbus kimliğine sahip bir Power Meter zaten var.",
+      "node_not_loaded": "Seçilen Modbus Node yüklenmedi. Modbus Node cihazını kontrol edin.",
+      "write_failed": "Ayarlar cihaza yazılamıyor. Modbus Node'u, Modbus kimliğini ve kablolamayı kontrol edin.",
+      "phase_invalid_value": "Cihaz, bazı kanallar için geçersiz bir faz ataması içeriyor (A, B veya C dışında bir değer). Bunlar için Faz A gösterilir; gönderildiğinde seçim cihaza yazılır.",
+      "write_verify_failed": "Cihaz ayarları kabul etmedi: yazmadan sonra geri okunan değerler yazılanlardan farklı.",
+      "tools_no_change": "Yeni ayarlar mevcut ayarlarla aynı."
+    },
+    "abort": {
+      "already_configured": "Cihaz zaten yapılandırılmış",
+      "tools_applied": "Tamam. Cihaz artık şu ayarlarla yanıt veriyor: ID **{new_id}**, **{new_baud}** baud, **{new_format}**.\n\nAynı seri parametreleri (baud hızı, eşlik, durdurma biti) bu cihazın kullandığı Modbus Node'da – veya TCP/UDP ağ geçidinde – ayarlayın ve cihaz Power Meter olarak kullanılıyorsa yeni Modbus kimliğini Power Meter yapılandırmasında ayarlayın.",
+      "tools_pending": "Cihaz ayarları onayladı, ancak hâlâ ESKİ ayarlarla yanıt veriyor (ID {old_id}, {old_baud} baud, {old_format}). Yeni ayarlar yalnızca cihazın gücü kapatılıp açıldıktan sonra devreye girebilir. Cihazı yeniden başlatın ve ardından şunu kullanın: ID {new_id}, {new_baud} baud, {new_format}.",
+      "tools_unreachable": "Cihaz ne eski ne de yeni ayarlarla yanıt veriyor, bu nedenle sonuç doğrulanamadı. Ayarlar uygulanmış olabilir – yenilerini deneyin (ID {new_id}, {new_baud} baud, {new_format}). Cihaza hiç ulaşılamıyorsa fabrika ayarlarını deneyin: ID 1, 9600 baud, 8N1.",
+      "tools_unverified": "Ayarlar gönderildi (ID {new_id}, {new_baud} baud, {new_format}). Bu tür bir bağlantıda (TCP/UDP veya mevcut bir Modbus hub'ı) hat ayarları sabit olduğundan baud hızı veya veri formatı değişikliği doğrulanamaz. Aynı seri parametreleri ağ geçidinde / Modbus hub'ında ayarlayın ve cihazın yanıt verdiğini kontrol edin."
+    }
+  },
+  "options": {
+    "step": {
+      "modbus_connection_type": {
+        "title": "Modbus bağlantısı",
+        "description": "Modbus bağlantı türünü seçin\n\n**Bu Modbus Node'u kullanan Power Meter cihazları:** {used_by}\n\nBu Modbus Node'u kaldırırsanız, bu cihazlar çalışmayı durdurur.",
+        "data": {
+          "modbus_connection_type": "Bağlantı türü"
+        }
+      },
+      "modbus_existing_node": {
+        "title": "Mevcut Modbus Node",
+        "description": "Home Assistant'ta tanımlı mevcut bir Modbus hub'ını seçin",
+        "data": {
+          "modbus_node_name": "Modbus Node"
+        }
+      },
+      "modbus_usb": {
+        "title": "Modbus – USB portu (seri)",
+        "description": "Modbus seri (USB / RS485) bağlantı ayarları. Cihaz yalnızca 9600, 19200 ve 38400 baud hızlarını destekler.",
+        "data": {
+          "port": "USB portu (port)",
+          "baudrate": "Baud hızı (baudrate)",
+          "bytesize": "Veri biti (bytesize)",
+          "stopbits": "Durdurma biti (stopbits)",
+          "parity": "Eşlik (parity)",
+          "delay": "Saniye cinsinden gecikme (delay)",
+          "message_wait_millisecond": "Milisaniye cinsinden mesaj bekleme süresi (message_wait_millisecond)",
+          "timeout": "Saniye cinsinden zaman aşımı (timeout)"
+        }
+      },
+      "modbus_tcp": {
+        "title": "Modbus – TCP sunucusu",
+        "description": "Modbus TCP bağlantı ayarları",
+        "data": {
+          "host": "IP adresi / ana bilgisayar adı (host)",
+          "port": "Port (port)",
+          "timeout": "Saniye cinsinden zaman aşımı (timeout)"
+        }
+      },
+      "modbus_udp": {
+        "title": "Modbus – UDP sunucusu",
+        "description": "Modbus UDP bağlantı ayarları",
+        "data": {
+          "host": "IP adresi / ana bilgisayar adı (host)",
+          "port": "Port (port)",
+          "timeout": "Saniye cinsinden zaman aşımı (timeout)"
+        }
+      },
+      "power_meter_settings": {
+        "title": "Power Meter ayarları",
+        "description": "Bu Power Meter'ın kullandığı Modbus Node'u seçin ve Modbus kimliğini ayarlayın. Tüm değerler tek bir Modbus paketiyle okunur.",
+        "data": {
+          "modbus_node_entry_id": "Modbus Node cihazı",
+          "modbus_device_id": "Modbus cihaz kimliği (slave adresi)",
+          "scan_interval": "Okuma aralığı (sn)"
+        }
+      },
+      "power_meter_phases": {
+        "title": "Faz ataması",
+        "description": "{model} cihazının her akım kanalına bir gerilim fazı atayın. Cihazdan okunan geçerli ayar gösterilir; onaylamak, yapılan değişiklikleri cihaza yazar.",
+        "data": {
+          "phase_ch01": "Faz – CH01",
+          "phase_ch02": "Faz – CH02",
+          "phase_ch03": "Faz – CH03",
+          "phase_ch04": "Faz – CH04",
+          "phase_ch05": "Faz – CH05",
+          "phase_ch06": "Faz – CH06",
+          "phase_ch07": "Faz – CH07",
+          "phase_ch08": "Faz – CH08",
+          "phase_ch09": "Faz – CH09",
+          "phase_ch10": "Faz – CH10",
+          "phase_ch11": "Faz – CH11",
+          "phase_ch12": "Faz – CH12"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Cihaz okunamıyor. Modbus Node'u, Modbus kimliğini ve kablolamayı kontrol edin.",
+      "unknown": "Beklenmeyen hata",
+      "no_modbus_nodes": "Sistemde hiç Modbus düğümü bulunamadı. Önce en az bir Modbus hub'ı tanımlayın.",
+      "no_serial_ports": "Boş seri port bulunamadı. Tüm portlar zaten kullanımda olabilir.",
+      "no_modbus_node_entries": "Hiç Modbus Node cihazı yok. Önce en az bir Modbus Node cihazı oluşturun.",
+      "device_id_in_use": "Seçilen Modbus Node üzerinde bu Modbus kimliğine sahip bir Power Meter zaten var.",
+      "node_not_loaded": "Seçilen Modbus Node yüklenmedi. Modbus Node cihazını kontrol edin.",
+      "write_failed": "Ayarlar cihaza yazılamıyor. Modbus Node'u, Modbus kimliğini ve kablolamayı kontrol edin.",
+      "phase_invalid_value": "Cihaz, bazı kanallar için geçersiz bir faz ataması içeriyor (A, B veya C dışında bir değer). Bunlar için Faz A gösterilir; gönderildiğinde seçim cihaza yazılır.",
+      "write_verify_failed": "Cihaz ayarları kabul etmedi: yazmadan sonra geri okunan değerler yazılanlardan farklı."
+    },
+    "abort": {
+      "already_configured": "Cihaz zaten yapılandırılmış"
+    }
+  },
+  "selector": {
+    "device_type": {
+      "options": {
+        "modbus_node": "Modbus Node",
+        "power_meter": "Power Meter",
+        "tools": "Tools – cihaz kimliğini / iletişim ayarlarını değiştir (sihirbaz)"
+      }
+    },
+    "modbus_connection_type": {
+      "options": {
+        "existing_node": "Mevcut Modbus Node",
+        "usb": "USB portu",
+        "tcp": "TCP sunucusu",
+        "udp": "UDP sunucusu"
+      }
+    },
+    "modbus_baudrate": {
+      "options": {
+        "9600": "9600",
+        "19200": "19200",
+        "38400": "38400"
+      }
+    },
+    "modbus_bytesize": {
+      "options": {
+        "5": "5",
+        "6": "6",
+        "7": "7",
+        "8": "8"
+      }
+    },
+    "modbus_stopbits": {
+      "options": {
+        "1": "1",
+        "2": "2"
+      }
+    },
+    "modbus_parity": {
+      "options": {
+        "N": "Yok",
+        "E": "Çift",
+        "O": "Tek",
+        "M": "Mark"
+      }
+    },
+    "phase": {
+      "options": {
+        "a": "Faz A",
+        "b": "Faz B",
+        "c": "Faz C"
+      }
+    },
+    "data_format": {
+      "options": {
+        "8N1": "8N1 (8 veri biti, eşlik yok, 1 durdurma biti)",
+        "8E1": "8E1 (8 veri biti, çift eşlik, 1 durdurma biti)",
+        "8O1": "8O1 (8 veri biti, tek eşlik, 1 durdurma biti)",
+        "8N2": "8N2 (8 veri biti, eşlik yok, 2 durdurma biti)"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "error_code": {
+        "name": "Hata kodu"
+      },
+      "raw_data": {
+        "name": "Ham veri"
+      },
+      "model": {
+        "name": "Model"
+      },
+      "voltage_range": {
+        "name": "Gerilim aralığı"
+      },
+      "circuit_range": {
+        "name": "Akım aralığı"
+      },
+      "channel_voltage": {
+        "name": "Gerilim - CH{channel}"
+      },
+      "channel_current": {
+        "name": "Akım - CH{channel}"
+      },
+      "channel_power": {
+        "name": "Aktif güç - CH{channel}"
+      },
+      "channel_energy": {
+        "name": "Toplam aktif enerji - CH{channel}"
+      },
+      "channel_power_factor": {
+        "name": "Güç faktörü - CH{channel}"
+      },
+      "channel_frequency": {
+        "name": "Frekans - CH{channel}"
+      }
+    }
+  },
+  "issues": {
+    "node_missing": {
+      "title": "{meter} için Modbus Node eksik",
+      "description": "**{meter}** Power Meter'ı artık var olmayan bir Modbus Node kullanıyor, bu nedenle veri okuyamıyor. Yeni bir Modbus Node oluşturun ve bu Power Meter'ın yapılandırmasında seçin."
+    }
+  }
+}
