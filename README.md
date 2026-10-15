@@ -5,7 +5,9 @@
 <h1 align="center">⚡ Power Meter JSY for Home Assistant</h1>
 
 <p align="center">
-  Multi-device Modbus integration for <b>JSY Power Meter devices</b><br>
+  <b>
+  Multi-device Modbus integration for <a href="https://www.jsypowermeter.com/">JSY Power Meter devices</a>.
+  </b>
 </p>
 
 <p align="center">
