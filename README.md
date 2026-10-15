@@ -6,7 +6,7 @@
 
 <p align="center">
   <b>
-  Multi-device Modbus integration for <a href="https://www.jsypowermeter.com/">JSY Power Meter devices</a>.
+  Multi-device Modbus integration for <a href="https://jsypowermeter.com" target="_blank" rel="noopener noreferrer">JSY Power Meter devices</a>.
   </b>
 </p>
 
