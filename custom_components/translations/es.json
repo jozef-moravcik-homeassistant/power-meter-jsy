@@ -1,0 +1,375 @@
+{
+  "config": {
+    "step": {
+      "modbus_connection_type": {
+        "title": "Conexión Modbus",
+        "description": "Seleccione el tipo de conexión Modbus",
+        "data": {
+          "modbus_connection_type": "Tipo de conexión"
+        }
+      },
+      "modbus_existing_node": {
+        "title": "Modbus Node existente",
+        "description": "Seleccione un hub Modbus existente definido en Home Assistant",
+        "data": {
+          "modbus_node_name": "Modbus Node"
+        }
+      },
+      "modbus_usb": {
+        "title": "Modbus – puerto USB (serie)",
+        "description": "Ajustes de la conexión serie Modbus (USB / RS485). El dispositivo solo admite 9600, 19200 y 38400 baudios.",
+        "data": {
+          "port": "Puerto USB (port)",
+          "baudrate": "Velocidad en baudios (baudrate)",
+          "bytesize": "Bits de datos (bytesize)",
+          "stopbits": "Bits de parada (stopbits)",
+          "parity": "Paridad (parity)",
+          "delay": "Retardo en segundos (delay)",
+          "message_wait_millisecond": "Espera de mensaje en milisegundos (message_wait_millisecond)",
+          "timeout": "Tiempo de espera en segundos (timeout)"
+        }
+      },
+      "modbus_tcp": {
+        "title": "Modbus – servidor TCP",
+        "description": "Ajustes de la conexión Modbus TCP",
+        "data": {
+          "host": "Dirección IP / nombre de host (host)",
+          "port": "Puerto (port)",
+          "timeout": "Tiempo de espera en segundos (timeout)"
+        }
+      },
+      "modbus_udp": {
+        "title": "Modbus – servidor UDP",
+        "description": "Ajustes de la conexión Modbus UDP",
+        "data": {
+          "host": "Dirección IP / nombre de host (host)",
+          "port": "Puerto (port)",
+          "timeout": "Tiempo de espera en segundos (timeout)"
+        }
+      },
+      "power_meter_settings": {
+        "title": "Ajustes de Power Meter",
+        "description": "Seleccione el Modbus Node que utiliza este Power Meter y establezca su ID Modbus. Todos los valores se leen con un único paquete Modbus.",
+        "data": {
+          "modbus_node_entry_id": "Dispositivo Modbus Node",
+          "modbus_device_id": "ID Modbus del dispositivo (dirección slave)",
+          "scan_interval": "Intervalo de lectura (s)"
+        }
+      },
+      "device_type": {
+        "title": "Tipo de dispositivo",
+        "description": "Seleccione el tipo de dispositivo que desea añadir",
+        "data": {
+          "device_type": "Tipo de dispositivo"
+        }
+      },
+      "power_meter_device_info": {
+        "title": "Parámetros del dispositivo",
+        "description": "Se han leído del dispositivo los siguientes parámetros:\n\n- **Modelo:** {model} (registro 0x0000 = {model_code})\n\n- **Rango de tensión:** {voltage_range} (registro 0x0002)\n\n- **Rango de corriente:** {current_range} (registro 0x0003)\n\nConfirme para añadir el dispositivo.",
+        "data": {}
+      },
+      "power_meter_phases": {
+        "title": "Asignación de fases",
+        "description": "Asigne una fase de tensión a cada canal de corriente de {model}. Se muestra el ajuste actual leído del dispositivo; al confirmar, los cambios se escriben en el dispositivo.",
+        "data": {
+          "phase_ch01": "Fase – CH01",
+          "phase_ch02": "Fase – CH02",
+          "phase_ch03": "Fase – CH03",
+          "phase_ch04": "Fase – CH04",
+          "phase_ch05": "Fase – CH05",
+          "phase_ch06": "Fase – CH06",
+          "phase_ch07": "Fase – CH07",
+          "phase_ch08": "Fase – CH08",
+          "phase_ch09": "Fase – CH09",
+          "phase_ch10": "Fase – CH10",
+          "phase_ch11": "Fase – CH11",
+          "phase_ch12": "Fase – CH12"
+        }
+      },
+      "tools_device": {
+        "title": "Tools – dispositivo actual",
+        "description": "Introduzca el ID Modbus que usa actualmente el dispositivo (ajuste de fábrica: ID 1, 9600 baudios, 8N1). La conexión indicada en los pasos anteriores debe coincidir con los ajustes de comunicación actuales del dispositivo.\n\n**Escritura por broadcast:** los nuevos ajustes se envían al ID 0 y los reciben **TODOS los dispositivos del bus**. Si varios dispositivos comparten el bus, su ID y sus ajustes de comunicación también cambiarán; úselo solo cuando haya exactamente un dispositivo conectado.",
+        "data": {
+          "modbus_device_id": "ID Modbus actual del dispositivo",
+          "use_broadcast": "Escribir por broadcast (ID 0) – PELIGROSO"
+        }
+      },
+      "tools_new_params": {
+        "title": "Tools – nuevos ajustes de comunicación",
+        "description": "Establezca el ID y los parámetros de comunicación que se escribirán en el dispositivo. El nuevo ID no debe estar en uso por otro dispositivo del mismo bus.",
+        "data": {
+          "new_device_id": "Nuevo ID Modbus",
+          "new_baudrate": "Nueva velocidad en baudios",
+          "new_data_format": "Nuevo formato de datos"
+        }
+      },
+      "tools_confirm": {
+        "title": "Tools – confirmar",
+        "description": "**ID de destino:** {target}\n\n**Modelo:** {model}\n\n**Cambio:** ID {old_id} → {new_id}, {old_baud} → {new_baud} baudios, {old_format} → {new_format}\n\nSi el ID de destino es 0 (broadcast), TODOS los dispositivos del bus reciben los nuevos ajustes.\n\nTras la escritura, el dispositivo se lee con los nuevos parámetros para verificar el resultado. Esto puede tardar varios segundos.",
+        "data": {}
+      },
+      "tools_connection_type": {
+        "title": "Tools – conexión al dispositivo",
+        "description": "Elija CÓMO se conecta al dispositivo cuyos ajustes desea cambiar. Las siguientes ventanas describen sus parámetros de comunicación ACTUALES; los nuevos parámetros se introducen en un paso posterior.",
+        "data": {
+          "modbus_connection_type": "Tipo de conexión"
+        }
+      },
+      "tools_existing_node": {
+        "title": "Tools – Modbus Node existente",
+        "description": "Seleccione el hub Modbus existente definido en Home Assistant a través del cual está conectado el dispositivo. La velocidad y el formato los determina este hub (los ajustes ACTUALES del dispositivo).",
+        "data": {
+          "modbus_node_name": "Modbus Node"
+        }
+      },
+      "tools_usb": {
+        "title": "Tools – ajustes ACTUALES del dispositivo (USB / RS485)",
+        "description": "Introduzca los parámetros de comunicación ACTUALES del dispositivo, es decir, los que usa AHORA MISMO (ajuste de fábrica: 9600 baudios, 8 bits de datos, sin paridad, 1 bit de parada). Los nuevos parámetros que se escribirán en el dispositivo se introducen en el siguiente paso.",
+        "data": {
+          "port": "Puerto USB (port)",
+          "baudrate": "Velocidad en baudios ACTUAL del dispositivo (baudrate)",
+          "bytesize": "Bits de datos ACTUALES (bytesize)",
+          "stopbits": "Bits de parada ACTUALES (stopbits)",
+          "parity": "Paridad ACTUAL (parity)",
+          "delay": "Retardo en segundos (delay)",
+          "message_wait_millisecond": "Espera de mensaje en milisegundos (message_wait_millisecond)",
+          "timeout": "Tiempo de espera en segundos (timeout)"
+        }
+      },
+      "tools_tcp": {
+        "title": "Tools – conexión mediante servidor TCP",
+        "description": "Introduzca la dirección de la pasarela TCP a través de la cual está conectado el dispositivo. La velocidad y el formato de RS485 los determina la pasarela; aquí no se introducen.",
+        "data": {
+          "host": "Dirección IP / nombre de host (host)",
+          "port": "Puerto (port)",
+          "timeout": "Tiempo de espera en segundos (timeout)"
+        }
+      },
+      "tools_udp": {
+        "title": "Tools – conexión mediante servidor UDP",
+        "description": "Introduzca la dirección de la pasarela UDP a través de la cual está conectado el dispositivo. La velocidad y el formato de RS485 los determina la pasarela; aquí no se introducen.",
+        "data": {
+          "host": "Dirección IP / nombre de host (host)",
+          "port": "Puerto (port)",
+          "timeout": "Tiempo de espera en segundos (timeout)"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "No se puede leer el dispositivo. Compruebe el Modbus Node, el ID Modbus y el cableado.",
+      "unknown": "Error inesperado",
+      "no_modbus_nodes": "No se encontró ningún nodo Modbus en el sistema. Defina primero al menos un hub Modbus.",
+      "no_serial_ports": "No se encontraron puertos serie libres. Puede que todos los puertos ya estén en uso.",
+      "no_modbus_node_entries": "No existe ningún dispositivo Modbus Node. Cree primero al menos un dispositivo Modbus Node.",
+      "device_id_in_use": "Ya existe un Power Meter con este ID Modbus en el Modbus Node seleccionado.",
+      "node_not_loaded": "El Modbus Node seleccionado no está cargado. Compruebe el dispositivo Modbus Node.",
+      "write_failed": "No se pueden escribir los ajustes en el dispositivo. Compruebe el Modbus Node, el ID Modbus y el cableado.",
+      "phase_invalid_value": "El dispositivo contiene una asignación de fase no válida en algunos canales (un valor distinto de A, B o C). Para ellos se muestra la fase A; al enviar, la selección se escribe en el dispositivo.",
+      "write_verify_failed": "El dispositivo no aceptó los ajustes: los valores leídos tras la escritura difieren de los escritos.",
+      "tools_no_change": "Los nuevos ajustes son iguales a los actuales."
+    },
+    "abort": {
+      "already_configured": "El dispositivo ya está configurado",
+      "tools_applied": "Listo. El dispositivo ahora responde con: ID **{new_id}**, **{new_baud}** baudios, **{new_format}**.\n\nEstablezca los mismos parámetros serie (velocidad, paridad, bits de parada) en el Modbus Node que usa este dispositivo, o en la pasarela TCP/UDP, y, si el dispositivo se utiliza como Power Meter, establezca el nuevo ID Modbus en la configuración de Power Meter.",
+      "tools_pending": "El dispositivo confirmó los ajustes, pero sigue respondiendo con los ajustes ANTIGUOS (ID {old_id}, {old_baud} baudios, {old_format}). Los nuevos ajustes pueden aplicarse solo tras apagar y encender el dispositivo. Reinícielo y use después: ID {new_id}, {new_baud} baudios, {new_format}.",
+      "tools_unreachable": "El dispositivo no responde ni con los ajustes antiguos ni con los nuevos, por lo que no se pudo verificar el resultado. Es posible que los ajustes se hayan aplicado: pruebe los nuevos (ID {new_id}, {new_baud} baudios, {new_format}). Si no se puede acceder al dispositivo en absoluto, pruebe los valores de fábrica: ID 1, 9600 baudios, 8N1.",
+      "tools_unverified": "Los ajustes se enviaron (ID {new_id}, {new_baud} baudios, {new_format}). En este tipo de conexión (TCP/UDP o un hub Modbus existente) no se puede verificar un cambio de velocidad en baudios o de formato de datos, porque los ajustes del enlace son fijos. Establezca los mismos parámetros serie en la pasarela / el hub Modbus y compruebe que el dispositivo responde."
+    }
+  },
+  "options": {
+    "step": {
+      "modbus_connection_type": {
+        "title": "Conexión Modbus",
+        "description": "Seleccione el tipo de conexión Modbus\n\n**Dispositivos Power Meter que usan este Modbus Node:** {used_by}\n\nSi elimina este Modbus Node, estos dispositivos dejarán de funcionar.",
+        "data": {
+          "modbus_connection_type": "Tipo de conexión"
+        }
+      },
+      "modbus_existing_node": {
+        "title": "Modbus Node existente",
+        "description": "Seleccione un hub Modbus existente definido en Home Assistant",
+        "data": {
+          "modbus_node_name": "Modbus Node"
+        }
+      },
+      "modbus_usb": {
+        "title": "Modbus – puerto USB (serie)",
+        "description": "Ajustes de la conexión serie Modbus (USB / RS485). El dispositivo solo admite 9600, 19200 y 38400 baudios.",
+        "data": {
+          "port": "Puerto USB (port)",
+          "baudrate": "Velocidad en baudios (baudrate)",
+          "bytesize": "Bits de datos (bytesize)",
+          "stopbits": "Bits de parada (stopbits)",
+          "parity": "Paridad (parity)",
+          "delay": "Retardo en segundos (delay)",
+          "message_wait_millisecond": "Espera de mensaje en milisegundos (message_wait_millisecond)",
+          "timeout": "Tiempo de espera en segundos (timeout)"
+        }
+      },
+      "modbus_tcp": {
+        "title": "Modbus – servidor TCP",
+        "description": "Ajustes de la conexión Modbus TCP",
+        "data": {
+          "host": "Dirección IP / nombre de host (host)",
+          "port": "Puerto (port)",
+          "timeout": "Tiempo de espera en segundos (timeout)"
+        }
+      },
+      "modbus_udp": {
+        "title": "Modbus – servidor UDP",
+        "description": "Ajustes de la conexión Modbus UDP",
+        "data": {
+          "host": "Dirección IP / nombre de host (host)",
+          "port": "Puerto (port)",
+          "timeout": "Tiempo de espera en segundos (timeout)"
+        }
+      },
+      "power_meter_settings": {
+        "title": "Ajustes de Power Meter",
+        "description": "Seleccione el Modbus Node que utiliza este Power Meter y establezca su ID Modbus. Todos los valores se leen con un único paquete Modbus.",
+        "data": {
+          "modbus_node_entry_id": "Dispositivo Modbus Node",
+          "modbus_device_id": "ID Modbus del dispositivo (dirección slave)",
+          "scan_interval": "Intervalo de lectura (s)"
+        }
+      },
+      "power_meter_phases": {
+        "title": "Asignación de fases",
+        "description": "Asigne una fase de tensión a cada canal de corriente de {model}. Se muestra el ajuste actual leído del dispositivo; al confirmar, los cambios se escriben en el dispositivo.",
+        "data": {
+          "phase_ch01": "Fase – CH01",
+          "phase_ch02": "Fase – CH02",
+          "phase_ch03": "Fase – CH03",
+          "phase_ch04": "Fase – CH04",
+          "phase_ch05": "Fase – CH05",
+          "phase_ch06": "Fase – CH06",
+          "phase_ch07": "Fase – CH07",
+          "phase_ch08": "Fase – CH08",
+          "phase_ch09": "Fase – CH09",
+          "phase_ch10": "Fase – CH10",
+          "phase_ch11": "Fase – CH11",
+          "phase_ch12": "Fase – CH12"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "No se puede leer el dispositivo. Compruebe el Modbus Node, el ID Modbus y el cableado.",
+      "unknown": "Error inesperado",
+      "no_modbus_nodes": "No se encontró ningún nodo Modbus en el sistema. Defina primero al menos un hub Modbus.",
+      "no_serial_ports": "No se encontraron puertos serie libres. Puede que todos los puertos ya estén en uso.",
+      "no_modbus_node_entries": "No existe ningún dispositivo Modbus Node. Cree primero al menos un dispositivo Modbus Node.",
+      "device_id_in_use": "Ya existe un Power Meter con este ID Modbus en el Modbus Node seleccionado.",
+      "node_not_loaded": "El Modbus Node seleccionado no está cargado. Compruebe el dispositivo Modbus Node.",
+      "write_failed": "No se pueden escribir los ajustes en el dispositivo. Compruebe el Modbus Node, el ID Modbus y el cableado.",
+      "phase_invalid_value": "El dispositivo contiene una asignación de fase no válida en algunos canales (un valor distinto de A, B o C). Para ellos se muestra la fase A; al enviar, la selección se escribe en el dispositivo.",
+      "write_verify_failed": "El dispositivo no aceptó los ajustes: los valores leídos tras la escritura difieren de los escritos."
+    },
+    "abort": {
+      "already_configured": "El dispositivo ya está configurado"
+    }
+  },
+  "selector": {
+    "device_type": {
+      "options": {
+        "modbus_node": "Modbus Node",
+        "power_meter": "Power Meter",
+        "tools": "Tools – cambiar ID del dispositivo / ajustes de comunicación (asistente)"
+      }
+    },
+    "modbus_connection_type": {
+      "options": {
+        "existing_node": "Modbus Node existente",
+        "usb": "Puerto USB",
+        "tcp": "Servidor TCP",
+        "udp": "Servidor UDP"
+      }
+    },
+    "modbus_baudrate": {
+      "options": {
+        "9600": "9600",
+        "19200": "19200",
+        "38400": "38400"
+      }
+    },
+    "modbus_bytesize": {
+      "options": {
+        "5": "5",
+        "6": "6",
+        "7": "7",
+        "8": "8"
+      }
+    },
+    "modbus_stopbits": {
+      "options": {
+        "1": "1",
+        "2": "2"
+      }
+    },
+    "modbus_parity": {
+      "options": {
+        "N": "Ninguna",
+        "E": "Par",
+        "O": "Impar",
+        "M": "Mark"
+      }
+    },
+    "phase": {
+      "options": {
+        "a": "Fase A",
+        "b": "Fase B",
+        "c": "Fase C"
+      }
+    },
+    "data_format": {
+      "options": {
+        "8N1": "8N1 (8 bits de datos, sin paridad, 1 bit de parada)",
+        "8E1": "8E1 (8 bits de datos, paridad par, 1 bit de parada)",
+        "8O1": "8O1 (8 bits de datos, paridad impar, 1 bit de parada)",
+        "8N2": "8N2 (8 bits de datos, sin paridad, 2 bits de parada)"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "error_code": {
+        "name": "Código de error"
+      },
+      "raw_data": {
+        "name": "Datos sin procesar"
+      },
+      "model": {
+        "name": "Modelo"
+      },
+      "voltage_range": {
+        "name": "Rango de tensión"
+      },
+      "circuit_range": {
+        "name": "Rango de corriente"
+      },
+      "channel_voltage": {
+        "name": "Tensión - CH{channel}"
+      },
+      "channel_current": {
+        "name": "Corriente - CH{channel}"
+      },
+      "channel_power": {
+        "name": "Potencia activa - CH{channel}"
+      },
+      "channel_energy": {
+        "name": "Energía activa total - CH{channel}"
+      },
+      "channel_power_factor": {
+        "name": "Factor de potencia - CH{channel}"
+      },
+      "channel_frequency": {
+        "name": "Frecuencia - CH{channel}"
+      }
+    }
+  },
+  "issues": {
+    "node_missing": {
+      "title": "Falta el Modbus Node de {meter}",
+      "description": "El Power Meter **{meter}** usa un Modbus Node que ya no existe, por lo que no puede leer datos. Cree un nuevo Modbus Node y selecciónelo en la configuración de este Power Meter."
+    }
+  }
+}
