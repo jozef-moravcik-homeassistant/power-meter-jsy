@@ -4,6 +4,9 @@
   "after_dependencies": [
     "modbus"
   ],
+  "categories": [
+    "energy.meters_monitoring"
+  ],
   "codeowners": [
     "@jozef-moravcik-homeassistant"
   ],
