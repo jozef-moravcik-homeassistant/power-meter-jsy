@@ -13,7 +13,7 @@ DOMAIN = "power_meter_jsy"
 NAME = "Power Meter JSY"
 MANUFACTURER = "Jozef Moravcik"
 MODEL = "JSY-MK-138"
-VERSION = "1.01.01"
+VERSION = "1.01.02"
 DOCUMENTATION_URL = "https://github.com/jozef-moravcik-homeassistant/power-meter-jsy"
 
 # ---------------------------------------------------------------------------
@@ -261,8 +261,6 @@ PHASE_VERIFY_DELAY_S = 1.0
 CONFIG_TIMEOUT_S = 3.0
 
 # Pauza čítania počas otvoreného konfiguračného okna: poistka, ak sa okno nedokončí (s)
-HUB_RECONNECT_NUDGE_INTERVAL_S = 15   # najmenší odstup urýchlených pripojení core Modbus hubu
-HUB_RECONNECT_WAIT_STEPS = 12          # čakanie na pripojenie hubu: 12 x 0,25 s
 READ_HARD_TIMEOUT_S = 90            # najdlhšie trvanie jedného čítania (potom skončí chybou a čítanie pokračuje)
 RESUME_REFRESH_TIMEOUT_S = 60       # najdlhšie trvanie prvého čítania po obnovení (potom sa čítanie naplánuje aj tak)
 CONFIG_PAUSE_WATCHDOG_S = 300

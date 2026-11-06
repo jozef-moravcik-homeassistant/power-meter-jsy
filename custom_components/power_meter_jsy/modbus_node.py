@@ -65,9 +65,6 @@ class ModbusNodeInstance:
         # Zariadenia, pri ktorých sa už zalogovala chyba čítania (kým sa komunikácia neobnoví)
         self._failing_devices: set[int] = set()
 
-        # Čas posledného urýchleného pripojenia core Modbus hubu (monotonic)
-        self._last_hub_nudge: float = -HUB_RECONNECT_NUDGE_INTERVAL_S
-
         # Dočasne predĺžený timeout (napr. pri zápise konfigurácie); počíta sa súčasných používateľov
         self._timeout_override: float | None = None
         self._timeout_users = 0
@@ -95,32 +92,6 @@ class ModbusNodeInstance:
             if self._timeout_users <= 0:
                 self._timeout_users = 0
                 self._timeout_override = None
-
-    async def _ensure_hub_connected(self, hub) -> bool:
-        """Core Modbus hub sa pri neúspešnom pripojení (napr. port ešte držalo iné pripojenie) pokúša o nové
-        pripojenie až po 60 s. Po uvoľnení portu (napr. po prepnutí z USB na existujúci Modbus Node) preto
-        pripojenie urýchlime: čakajúci pokus hubu sa nahradí okamžitým. Pokus sa opakuje najviac raz za 15 s."""
-        connected = getattr(hub, "connected", None)
-        if connected is None or connected:
-            return True
-        now = time.monotonic()
-        if now - self._last_hub_nudge >= HUB_RECONNECT_NUDGE_INTERVAL_S:
-            self._last_hub_nudge = now
-            try:
-                task = getattr(hub, "_connect_task", None)
-                if task is not None and not task.done():
-                    task.cancel()
-                hub._connect_task = self.hass.async_create_background_task(
-                    hub.async_pb_connect(), "power_meter_jsy-modbus-reconnect")
-                LOGGER.debug("ModbusNode [%s]: forcing reconnect of Modbus hub '%s'",
-                             self._entry_id[:8], getattr(hub, "name", "?"))
-            except Exception as err:    # súkromné API core integrácie sa môže líšiť
-                LOGGER.debug("ModbusNode [%s]: cannot force hub reconnect: %s", self._entry_id[:8], err)
-        for _ in range(HUB_RECONNECT_WAIT_STEPS):
-            if hub.connected:
-                return True
-            await _sleep(0.25)
-        return bool(hub.connected)
 
     async def _respect_packet_gap(self, device_id: int) -> None:
         """Zaistí minimálnu medzeru medzi dvoma paketmi pre to isté zariadenie."""
@@ -331,9 +302,10 @@ class ModbusNodeInstance:
 
                 hub = modbus_hubs[node_name]
 
-                if not await self._ensure_hub_connected(hub):
+                # Pripojenie hubu spravuje výlučne core integrácia Modbus (vrátane opakovaných pokusov)
+                if getattr(hub, "connected", True) is False:
                     result['error'] = (f"Modbus node '{node_name}' is not connected (its port may be in use by "
-                                       f"another connection; the Modbus integration retries every 60 s)")
+                                       f"another connection; the Modbus integration reconnects on its own)")
                     self._log_failure(device_id, command, result['error'])
                     self.error_code |= MODBUS_ERROR_PORT_OPEN
                     return result
