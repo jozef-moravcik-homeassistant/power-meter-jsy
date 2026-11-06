@@ -17,7 +17,6 @@
     "power_meter_jsy"
   ],
   "requirements": [
-    "pyserial>=3.5",
     "pymodbus>=3.11.2"
   ],
   "version": "1.01.02"
