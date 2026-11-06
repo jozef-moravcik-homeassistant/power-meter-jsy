@@ -1,0 +1,26 @@
+{
+  "domain": "power_meter_jsy",
+  "name": "Power Meter JSY",
+  "after_dependencies": [
+    "modbus"
+  ],
+  "categories": [
+    "energy.meters_monitoring"
+  ],
+  "codeowners": [
+    "@jozef-moravcik-homeassistant"
+  ],
+  "config_flow": true,
+  "dependencies": [],
+  "documentation": "https://github.com/jozef-moravcik-homeassistant/power-meter-jsy",
+  "integration_type": "device",
+  "iot_class": "local_polling",
+  "issue_tracker": "https://github.com/jozef-moravcik-homeassistant/power-meter-jsy/issues",
+  "loggers": [
+    "power_meter_jsy"
+  ],
+  "requirements": [
+    "pymodbus>=3.11.2"
+  ],
+  "version": "1.01.02"
+}
